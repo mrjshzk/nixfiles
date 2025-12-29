@@ -29,7 +29,6 @@
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-
             home-manager.users.mrjshzk = ./home/home.nix;
 
             home-manager.extraSpecialArgs = {
@@ -44,7 +43,7 @@
         system = "x86_64-linux";
         modules = [
           ./hosts/laptop/configuration.nix
-          ./hosts/laptop/hardware_configuration.nix
+          ./hosts/laptop/hardware-configuration.nix
           ./hosts/laptop/intel-gpu.nix
           ./common/common.nix
           ./common/hyprland_wm.nix
@@ -52,7 +51,12 @@
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-            home-manager.users.mrjshzk = ./common/home.nix;
+            home-manager.users.mrjshzk = ./home/home.nix;
+
+            home-manager.extraSpecialArgs = {
+              inherit lazyvim;
+            };
+ 
           }
         ];
       };

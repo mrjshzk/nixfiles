@@ -10,6 +10,10 @@
         # Load Starship prompt
         eval "$(starship init bash)"
       '';
+      "backgrounds" = {
+        source = ./backgrounds;
+        recursive = true;
+      };
     };
     packages = with pkgs; [
       # common utils

@@ -38,6 +38,11 @@
         installDependencies = true; # Install gopls, gofumpt, etc.
         installRuntimeDependencies = true; # Install go compiler
       };
+      javascript = {
+        enable = true;
+        installDependencies = true;
+        installRuntimeDependencies = true;
+      };
     };
 
     # Only needed for languages not covered by LazyVim
@@ -55,9 +60,22 @@
             formatters_by_ft = {
               nix = { "alejandra" },
             },
-            format_on_save = {
-              lsp_fallback = true,
-              timeout_ms = 2000,
+         },
+        }
+      '';
+      snacks = ''
+        return {
+          {
+            "folke/snacks.nvim",
+            opts = {
+              picker = {
+                hidden = true,
+                sources = {
+                  files = {
+                    hidden = true, -- Show hidden/dotfiles
+                  },
+                },
+              },
             },
           },
         }
