@@ -1,0 +1,40 @@
+{
+  "position": "top",
+  "modules-left": ["hyprland/workspaces"],
+  "modules-center": ["clock"],
+  "modules-right": ["pulseaudio", "network", "battery", "hyprland/language"],
+  "clock": {
+    "format": "{:%D, %H:%M | %A}    ",
+    "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
+  },
+  "battery": {
+    "format": "{capacity}% ",
+    "format-charging": "{capacity}% "
+  },
+  "network": {
+    "format": "{essid}({signalStrength}%) {icon}",
+    "format-icons": ["󰤨", "󰤥", "󰤢", "󰤟"],
+    "interval": 60,
+    "family": "ipv4_6",
+    "on-click": "~/dotfiles/scripts/open_tui.sh impala"
+  },
+  "pulseaudio": {
+    "format": "{volume}% {icon}",
+    "format-bluetooth": "{volume}% {icon}",
+    "format-muted": "",
+    "format-icons": {
+      "headphones": "",
+      "headset": "",
+      "phone": "",
+      "phone-muted": "",
+      "portable": "",
+      "car": "",
+      "default": ["", ""]
+    },
+    "scroll-step": 1,
+    "on-click": "~/dotfiles/scripts/open_tui.sh wiremix"
+  },
+  "hyprland/language": {
+    "format": "{short}",
+  },
+}

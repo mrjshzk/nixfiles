@@ -1,0 +1,25 @@
+
+* {
+    min-height: 0;
+    padding: 0;
+    margin: 0;
+    color: #ffffff;
+    font-family: "JetBrains Mono Propo", monospace;
+}
+
+window#waybar {
+    background-color: transparent;
+}
+
+#pulseaudio {
+    margin: 0px 10px;
+}
+
+#network {
+    margin: 0px 10px;
+}
+
+#battery {
+    margin: 0px 20px 0px 10px;
+}
+
