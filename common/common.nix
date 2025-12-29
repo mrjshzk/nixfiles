@@ -41,7 +41,7 @@
     isNormalUser = true;
     description = "Miguel Silva";
     extraGroups = ["networkmanager" "wheel" "video" "audio"];
-    shell = pkgs.bash; # or pkgs.zsh, pkgs.fish
+    shell = pkgs.bash;
   };
 
   # ============================================
@@ -53,13 +53,6 @@
     wget
     curl
     git
-    killall
-    ripgrep
-    fd
-    fzf
-    gh
-    stow
-
     # File management
     unzip
     zip

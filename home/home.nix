@@ -4,6 +4,49 @@
   lazyvim,
   ...
 }: {
+  home = {
+    file = {
+      ".bashrc".text = ''
+        # Load Starship prompt
+        eval "$(starship init bash)"
+      '';
+    };
+    packages = with pkgs; [
+      # common utils
+      ripgrep
+      killall
+      fd
+      fzf
+      gh
+      stow
+
+      # Hyprland essentials
+      waybar # Status bar
+      wofi # App launcher
+      dunst # Notifications
+      hyprpaper # Wallpaper daemon
+      # TODO replace hyprlock
+      kitty # Terminal
+      starship # custom prompt
+
+      # Screenshot tools
+      grim # Screenshot utility
+      slurp # Select screen region
+      wl-clipboard # Clipboard utilities
+
+      # File manager
+      yazi
+
+      # Browsers
+      librewolf
+
+      # Other useful tools
+      wiremix # tui for audio
+      brightnessctl # Screen brightness
+      playerctl # Media control
+    ];
+  };
+
   imports = [
     ./nvim.nix
     ./bash.nix
@@ -12,22 +55,17 @@
     ./wofi.nix
     ./hyprpaper.nix
     ./starship.nix
+    ./dunst.nix
     ./hyprland.nix
   ];
-
-  #hack
-  home = {
-    file = {
-      ".bashrc".text = ''
-        # Load Starship prompt
-        eval "$(starship init bash)"
-      '';
-
-      #".config/hypr/hyprland.conf".source = ./hyprland/hyprland.conf;
-      #".config/hypr/autostart.conf".source = ./hyprland/autostart.conf;
-      #".config/hypr/bindinds.conf".source = ./hyprland/bindings.conf;
-      ###".config/hypr/input.conf".source = ./hyprland/input.conf;
-      #".config/hypr/monitors.conf".source = ./hyprland/monitors.conf;
+  programs.git = {
+    enable = true;
+    settings = {
+      user = {
+        name = "mrjshzk";
+        email = "mrjsilva05@gmail.com";
+      };
+      init.defaultBranch = "main";
     };
   };
 

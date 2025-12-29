@@ -4,7 +4,23 @@
   lazyvim,
   ...
 }: {
-  home.packages = [pkgs.deadnix pkgs.statix pkgs.alejandra pkgs.nixd];
+  home.packages = with pkgs; [
+    deadnix
+    statix
+    alejandra
+    nixd
+    clang
+    tree-sitter
+    luajitPackages.luarocks_bootstrap
+    trashy
+    glib
+    kdePackages.kde-cli-tools
+    git-spice
+    tectonic
+    mermaid-cli
+    tree-sitter-grammars.tree-sitter-css
+    lua5_4_compat
+  ];
 
   imports = [lazyvim.homeManagerModules.default];
 
@@ -25,10 +41,10 @@
     };
 
     # Only needed for languages not covered by LazyVim
-    treesitterParsers = with pkgs.vimPlugins.nvim-treesitter.grammarPlugins; [
-      wgsl # WebGPU Shading Language
-      templ # Go templ files
-    ];
+    #treesitterParsers = with vimPlugins.nvim-treesitter.grammarPlugins; [
+    #  wgsl # WebGPU Shading Language
+    #  templ # Go templ files
+    #];
 
     plugins = {
       conform = ''

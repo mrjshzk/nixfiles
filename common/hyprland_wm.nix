@@ -1,4 +1,3 @@
-# common/hyprland.nix
 {
   config,
   pkgs,
@@ -9,47 +8,7 @@
   # ============================================
   programs.hyprland = {
     enable = true;
-    #package = inputs.hyprland.packages."${pkgs.system}".hyprland;
   };
-  environment.systemPackages = with pkgs; [
-    # Hyprland essentials
-    waybar # Status bar
-    wofi # App launcher
-    dunst # Notifications
-    hyprpaper # Wallpaper daemon
-    # TODO replace hyprlock
-    kitty # Terminal
-    starship
-    wiremix
-    clang
-    tree-sitter
-    luajitPackages.luarocks_bootstrap
-    trashy
-    glib
-    kdePackages.kde-cli-tools
-    git-spice
-    tectonic
-    mermaid-cli
-    tree-sitter-grammars.tree-sitter-css
-    lua
-
-    # Screenshot tools
-    grim # Screenshot utility
-    slurp # Select screen region
-    wl-clipboard # Clipboard utilities
-
-    # File manager
-    yazi # or dolphin, nautilus
-
-    # Browsers
-    librewolf
-
-    # Other useful tools
-    pavucontrol # Audio control
-    brightnessctl # Screen brightness
-    playerctl # Media control
-  ];
-
   # ============================================
   # XDG PORTAL (for screen sharing, file pickers)
   # ============================================
