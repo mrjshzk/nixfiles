@@ -53,6 +53,7 @@
     wget
     curl
     git
+    gh
     # File management
     unzip
     zip
