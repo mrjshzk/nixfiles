@@ -25,6 +25,17 @@
 
   programs.lazyvim = {
     enable = true;
+    config = {
+      options = ''
+        vim.opt.timeoutlen = 200
+      '';
+
+      keymaps = ''
+        vim.keymap.set("n", "<leader>H", function()
+          Snacks.dashboard.open()
+        end, { desc = "Open dashboard"})
+      '';
+    };
     extras.lang = {
       nix.enable = true;
       python = {
@@ -43,12 +54,6 @@
         installRuntimeDependencies = true;
       };
     };
-
-    # Only needed for languages not covered by LazyVim
-    #treesitterParsers = with vimPlugins.nvim-treesitter.grammarPlugins; [
-    #  wgsl # WebGPU Shading Language
-    #  templ # Go templ files
-    #];
     treesitterParsers = with pkgs.vimPlugins.nvim-treesitter-parsers; [
       css
       scss
@@ -60,6 +65,16 @@
     ];
 
     plugins = {
+      which-key = ''
+        return {
+          {
+            "folke/which-key.nvim",
+            opts = {
+              delay = 0,
+            },
+          },
+        }
+      '';
       conform = ''
         return {
           "stevearc/conform.nvim",
