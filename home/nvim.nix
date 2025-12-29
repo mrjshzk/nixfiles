@@ -18,7 +18,6 @@
     git-spice
     tectonic
     mermaid-cli
-    tree-sitter-grammars.tree-sitter-css
     lua5_4_compat
   ];
 
@@ -50,6 +49,15 @@
     #  wgsl # WebGPU Shading Language
     #  templ # Go templ files
     #];
+    treesitterParsers = with pkgs.vimPlugins.nvim-treesitter-parsers; [
+      css
+      scss
+      latex
+      vue
+      tsx
+      templ
+      wgsl
+    ];
 
     plugins = {
       conform = ''
