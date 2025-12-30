@@ -51,6 +51,9 @@
       wiremix # tui for audio
       brightnessctl # Screen brightness
       playerctl # Media control
+
+      python313
+      python313Packages.pip
     ];
   };
 

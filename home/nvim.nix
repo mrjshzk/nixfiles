@@ -19,6 +19,7 @@
     tectonic
     mermaid-cli
     lua5_4_compat
+    vimPlugins.rustaceanvim
   ];
 
   imports = [lazyvim.homeManagerModules.default];
@@ -49,6 +50,11 @@
         installRuntimeDependencies = true; # Install go compiler
       };
       javascript = {
+        enable = true;
+        installDependencies = true;
+        installRuntimeDependencies = true;
+      };
+      rust = {
         enable = true;
         installDependencies = true;
         installRuntimeDependencies = true;
@@ -101,6 +107,13 @@
               },
             },
           },
+        }
+      '';
+      rustaceanvim = ''
+        return {
+          'mrcjkb/rustaceanvim',
+          version = '^6', -- Recommended
+          lazy = false, -- This plugin is already lazy
         }
       '';
     };

@@ -10,6 +10,11 @@
       url = "github:nix-community/stylix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    fenix = {
+      url = "github:nix-community/fenix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = {
@@ -18,6 +23,7 @@
     home-manager,
     lazyvim,
     stylix,
+    fenix,
     ...
   }: {
     nixosConfigurations = {
@@ -31,13 +37,27 @@
           ./common/common.nix
           ./common/hyprland_wm.nix
           stylix.nixosModules.stylix
-          home-manager.nixosModules.home-manager
+          # rust toolchain - fenix
+          ({pkgs, ...}: {
+            nixpkgs.overlays = [fenix.overlays.default];
+            environment.systemPackages = [
+              (pkgs.fenix.complete.withComponents [
+                "cargo"
+                "clippy"
+                "rust-src"
+                "rustc"
+                "rustfmt"
+              ])
+              pkgs.rust-analyzer-nightly
+            ];
+          })
+          home-manager.nixosModules.home-manager.home-manager
           {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.users.mrjshzk = ./home/home.nix;
+            useGlobalPkgs = true;
+            useUserPackages = true;
+            users.mrjshzk = ./home/home.nix;
 
-            home-manager.extraSpecialArgs = {
+            extraSpecialArgs = {
               inherit lazyvim;
             };
           }
@@ -54,6 +74,20 @@
           ./common/common.nix
           ./common/hyprland_wm.nix
           stylix.nixosModules.stylix
+          # rust toolchain - fenix
+          ({pkgs, ...}: {
+            nixpkgs.overlays = [fenix.overlays.default];
+            environment.systemPackages = [
+              (pkgs.fenix.complete.withComponents [
+                "cargo"
+                "clippy"
+                "rust-src"
+                "rustc"
+                "rustfmt"
+              ])
+              pkgs.rust-analyzer-nightly
+            ];
+          })
           home-manager.nixosModules.home-manager
           {
             home-manager.useGlobalPkgs = true;
