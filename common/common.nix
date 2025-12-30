@@ -14,6 +14,7 @@
 
   # Networking
   networking.networkmanager.enable = true;
+  networking.hostName = "nixxy";
 
   # Set your time zone.
   time.timeZone = "Europe/Lisbon";
@@ -53,7 +54,6 @@
     wget
     curl
     git
-    gh
     # File management
     unzip
     zip

@@ -6,6 +6,10 @@
     home-manager.url = "github:nix-community/home-manager";
     lazyvim.url = "github:pfassina/lazyvim-nix";
     hyprland.url = "github:hyprwm/Hyprland";
+    stylix = {
+      url = "github:nix-community/stylix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = {
@@ -13,6 +17,7 @@
     nixpkgs,
     home-manager,
     lazyvim,
+    stylix,
     ...
   }: {
     nixosConfigurations = {
@@ -25,6 +30,7 @@
           ./hosts/desktop/nvidia.nix
           ./common/common.nix
           ./common/hyprland_wm.nix
+          stylix.nixosModules.stylix
           home-manager.nixosModules.home-manager
           {
             home-manager.useGlobalPkgs = true;
@@ -47,6 +53,7 @@
           ./hosts/laptop/intel-gpu.nix
           ./common/common.nix
           ./common/hyprland_wm.nix
+          stylix.nixosModules.stylix
           home-manager.nixosModules.home-manager
           {
             home-manager.useGlobalPkgs = true;
@@ -56,7 +63,6 @@
             home-manager.extraSpecialArgs = {
               inherit lazyvim;
             };
- 
           }
         ];
       };
