@@ -27,16 +27,16 @@
       bind = [
         "$mainMod, RETURN, exec, $terminal"
         "$mainMod, Q, killactive"
-        "$mainMod, F, exec, ~/dotfiles/scripts/launch_tui.sh $fileManager"
-        "$mainMod, I, exec, ~/dotfiles/scripts/launch_tui.sh $wifi"
-        "$mainMod, O, exec, ~/dotfiles/scripts/launch_tui.sh $bluetooth"
+        "$mainMod, F, exec, ~/scripts/launch_tui.sh $fileManager"
+        "$mainMod, I, exec, ~/scripts/launch_tui.sh $wifi"
+        "$mainMod, O, exec, ~/scripts/launch_tui.sh $bluetooth"
         "$mainMod, B, exec, $browser"
         "$mainMod, R, exec, $menu"
         "$mainMod, D, exec, $doomEmacs"
         "$mainMod, M, exec, spotify"
-        "$mainMod, C, exec, ~/dotfiles/scripts/launch_web_app.sh https://github.com/copilot"
+        "$mainMod, C, exec, ~/scripts/launch_web_app.sh https://github.com/copilot"
         "$mainShiftMod, F, fullscreen"
-        "$mainShiftMod, R, exec, ~/dotfiles/scripts/reload_everything.sh"
+        "$mainShiftMod, R, exec, ~/scripts/reload_everything.sh"
 
         # Focus movement
         "$mainMod, left, movefocus, l"
@@ -76,8 +76,8 @@
         "$mainMod, mouse_up, workspace, e-1"
 
         # Media keys
-        ",XF86AudioRaiseVolume, exec, ~/dotfiles/scripts/change_vol.sh +"
-        ",XF86AudioLowerVolume, exec, ~/dotfiles/scripts/change_vol.sh -"
+        ",XF86AudioRaiseVolume, exec, ~/scripts/change_vol.sh +"
+        ",XF86AudioLowerVolume, exec, ~/scripts/change_vol.sh -"
         ",XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
         ",XF86AudioMicMute, exec, wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"
         ",XF86MonBrightnessUp, exec, brightnessctl -e4 -n2 set 5%+"

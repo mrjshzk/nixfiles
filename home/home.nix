@@ -14,6 +14,10 @@
         source = ./backgrounds;
         recursive = true;
       };
+      "scripts" = {
+        source = ./scripts;
+        recursive = true;
+      };
     };
     packages = with pkgs; [
       # common utils
@@ -21,7 +25,6 @@
       killall
       fd
       fzf
-      gh
       stow
 
       # Hyprland essentials
