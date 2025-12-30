@@ -9,11 +9,7 @@
   programs.hyprland = {
     enable = true;
   };
-  stylix = {
-    enable = true;
-    image = ../home/backgrounds/skeleton_army.jpg;
-    polarity = "dark";
-  };
+
   # ============================================
   # XDG PORTAL (for screen sharing, file pickers)
   # ============================================

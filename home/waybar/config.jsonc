@@ -4,7 +4,7 @@
   "modules-center": ["clock"],
   "modules-right": ["pulseaudio", "network", "battery", "hyprland/language"],
   "clock": {
-    "format": "{:%D, %H:%M | %A}    ",
+    "format": "{:%D, %H:%M | %A}",
     "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
   },
   "battery": {
@@ -12,15 +12,15 @@
     "format-charging": "{capacity}% "
   },
   "network": {
-    "format": "{essid}({signalStrength}%) {icon}",
+    "format": "({signalStrength}%){icon}",
     "format-icons": ["󰤨", "󰤥", "󰤢", "󰤟"],
     "interval": 60,
     "family": "ipv4_6",
     "on-click": "~/dotfiles/scripts/open_tui.sh impala"
   },
   "pulseaudio": {
-    "format": "{volume}% {icon}",
-    "format-bluetooth": "{volume}% {icon}",
+    "format": "{volume}%{icon}",
+    "format-bluetooth": "{volume}%{icon}",
     "format-muted": "",
     "format-icons": {
       "headphones": "",

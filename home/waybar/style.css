@@ -1,25 +1,29 @@
+@define-color dark-brown #26241F;
+@define-color light-brown #403D30;
+@define-color dark-green #59562E;
+@define-color light-green #A2A68A;
+@define-color sky-blue #61848C;
 
 * {
-    min-height: 0;
-    padding: 0;
-    margin: 0;
-    color: #ffffff;
-    font-family: "JetBrains Mono Propo", monospace;
+  min-height: 0;
+  padding: 0;
+  margin: 0;
+  color: #ffffff;
+  font-family: "JetBrains Mono Propo", monospace;
 }
 
 window#waybar {
-    background-color: transparent;
+  background-color: transparent;
 }
 
-#pulseaudio {
-    margin: 0px 10px;
+ #network, #battery, #language, #pulseaudio {
+  padding: 10px 10px 10px;
+  margin: 0 20px 0 20px;
+  border: 2px solid @light-green; 
+  border-radius: 5px;
+  background-color: @dark-brown;
 }
-
-#network {
-    margin: 0px 10px;
+.modules-right {
+  margin-right: 10px;
+  margin-top: 10px;
 }
-
-#battery {
-    margin: 0px 20px 0px 10px;
-}
-

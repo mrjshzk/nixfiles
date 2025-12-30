@@ -3,7 +3,10 @@
   description = "mrjshzk nix configuration";
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    home-manager.url = "github:nix-community/home-manager";
+    home-manager = {
+      url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     lazyvim.url = "github:pfassina/lazyvim-nix";
     hyprland.url = "github:hyprwm/Hyprland";
     stylix = {
@@ -17,7 +20,7 @@
     };
   };
 
-  outputs = {
+  outputs = inputs @ {
     self,
     nixpkgs,
     home-manager,
@@ -36,6 +39,7 @@
           ./hosts/desktop/nvidia.nix
           ./common/common.nix
           ./common/hyprland_wm.nix
+
           stylix.nixosModules.stylix
           # rust toolchain - fenix
           ({pkgs, ...}: {
@@ -51,13 +55,13 @@
               pkgs.rust-analyzer-nightly
             ];
           })
-          home-manager.nixosModules.home-manager.home-manager
+          home-manager.nixosModules.home-manager
           {
-            useGlobalPkgs = true;
-            useUserPackages = true;
-            users.mrjshzk = ./home/home.nix;
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.users. mrjshzk = import ./home/home.nix;
 
-            extraSpecialArgs = {
+            home-manager.extraSpecialArgs = {
               inherit lazyvim;
             };
           }
@@ -92,8 +96,7 @@
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-            home-manager.users.mrjshzk = ./home/home.nix;
-
+            home-manager.users. mrjshzk = import ./home/home.nix;
             home-manager.extraSpecialArgs = {
               inherit lazyvim;
             };
