@@ -1,26 +1,24 @@
 {
   "position": "top",
   "modules-left": ["hyprland/workspaces"],
-  "modules-center": ["clock"],
-  "modules-right": ["pulseaudio", "network", "battery", "hyprland/language"],
+  "modules-center": [],
+  "modules-right": ["cpu","pulseaudio", "network", "battery", "hyprland/language", "clock" ],
   "clock": {
-    "format": "{:%D, %H:%M | %A}",
     "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
   },
   "battery": {
-    "format": "{capacity}% ",
-    "format-charging": "{capacity}% "
+    "format": "{capacity}%   ",
+    "format-charging": "{capacity}%  "
   },
   "network": {
-    "format": "({signalStrength}%){icon}",
+    "format": "{signalStrength}% {icon} ",
     "format-icons": ["󰤨", "󰤥", "󰤢", "󰤟"],
     "interval": 60,
     "family": "ipv4_6",
-    "on-click": "~/dotfiles/scripts/open_tui.sh impala"
+    "on-click": "~/dotfiles/scripts/open_tui.sh nmtui"
   },
   "pulseaudio": {
-    "format": "{volume}%{icon}",
-    "format-bluetooth": "{volume}%{icon}",
+    "format": "{volume}% {icon} ",
     "format-muted": "",
     "format-icons": {
       "headphones": "",
@@ -37,4 +35,18 @@
   "hyprland/language": {
     "format": "{short}",
   },
+  "cpu": {
+    "interval": 1,
+    "format": "{icon0}{icon1}{icon2}{icon3} {usage:>2}%  ",
+    "format-icons": ["▁", "▂", "▃", "▄", "▅", "▆", "▇", "█"],
+  },
+  "hyprland/workspaces": {
+    "persistent-workspaces": {
+      "*": [1,2,3,4,5],
+    },
+    "format": "{icon}",
+    "format-icons": {
+    "active": " ",
+  },
+  }
 }

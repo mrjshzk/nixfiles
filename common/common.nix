@@ -130,8 +130,20 @@
   # Enable CUPS for printing (if needed)
   # services.printing.enable = true;
   services.xserver.enable = true;
-  services.displayManager.sddm.enable = true;
-  services.displayManager.sddm.wayland.enable = true;
+  #services.displayManager.sddm.enable = true;
+  #services.displayManager.sddm.wayland.enable = true;
+  #
+  #
+  services.greetd = {
+    enable = true;
+    settings = rec {
+      initial_session = {
+        command = "${pkgs.hyprland}/bin/hyprland";
+        user = "mrjshzk";
+      };
+      default_session = initial_session;
+    };
+  };
   # ============================================
   # MISC
   # ============================================

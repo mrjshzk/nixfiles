@@ -1,29 +1,47 @@
-@define-color dark-brown #26241F;
-@define-color light-brown #403D30;
-@define-color dark-green #59562E;
-@define-color light-green #A2A68A;
-@define-color sky-blue #61848C;
+@define-color bg-col #191726;
+@define-color brd-col #5B5A8C;
+@define-color txt-col #B7D8FF;
 
 * {
   min-height: 0;
   padding: 0;
   margin: 0;
   color: #ffffff;
+  font-size: 20px;
   font-family: "JetBrains Mono Propo", monospace;
+  color: @txt-col;
 }
 
 window#waybar {
   background-color: transparent;
 }
 
- #network, #battery, #language, #pulseaudio {
-  padding: 10px 10px 10px;
-  margin: 0 20px 0 20px;
-  border: 2px solid @light-green; 
+#network, #battery, #language, #pulseaudio, #clock, #cpu {
+  padding: 10px 10px 10px 10px;
+  margin: 0 6px 0 6px;
+  border: 2px solid @brd-col; 
   border-radius: 5px;
-  background-color: @dark-brown;
+  background-color: @bg-col;
 }
+
+#workspaces button {
+  transition: all 150ms ease-in-out;
+  border-radius: 5px;
+  background-color: @bg-col;
+  min-width: 40px;
+  margin-left: 10px;
+  border: 2px solid @brd-col; 
+}
+
+#workspaces button.active {
+  border: 3px dashed @brd-col; 
+  min-width: 50px;
+}
+
 .modules-right {
-  margin-right: 10px;
-  margin-top: 10px;
+  margin: 10px 10px 0 0;
+}
+
+.modules-left {
+  margin: 10px 0 0 20px;
 }
