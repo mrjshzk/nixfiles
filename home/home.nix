@@ -52,8 +52,10 @@
       brightnessctl # Screen brightness
       playerctl # Media control
 
+      # langs
       python313
       python313Packages.pip
+      go
     ];
   };
 
