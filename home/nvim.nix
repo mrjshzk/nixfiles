@@ -109,11 +109,19 @@
           },
         }
       '';
-      rustaceanvim = ''
+      colorblocks = ''
         return {
-          'mrcjkb/rustaceanvim',
-          version = '^6', -- Recommended
-          lazy = false, -- This plugin is already lazy
+          "Bishop-Fox/colorblocks.nvim",
+          lazy = false,
+          config = function()
+            require("colorblocks").setup({
+              symbol = "󰹞 ",
+              virt_text_pos = "eol",
+              mode = "fg",
+              section = { "S", "  ", "", "" },
+              filetypes = { "lua", "css", "nix", "conf" },
+            })
+          end
         }
       '';
     };

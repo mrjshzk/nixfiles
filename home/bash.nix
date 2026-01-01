@@ -5,6 +5,7 @@
 }: let
   rebuild = host: ''
     wdr="$(pwd)"
+    rm -r ~/.config/kitty
     cd ~/.config/nixos || exit 1
     sudo nixos-rebuild switch --flake .#${host}
     cd "$wdr"

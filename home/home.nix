@@ -18,6 +18,10 @@
         source = ./scripts;
         recursive = true;
       };
+      ".config/kitty" = {
+        source = ./kitty;
+        recursive = true;
+      };
     };
     packages = with pkgs; [
       # common utils
@@ -60,6 +64,7 @@
   };
 
   imports = [
+    ./colorscheme.nix
     ./nvim.nix
     ./bash.nix
     ./kitty.nix
