@@ -6,7 +6,7 @@
   services.hyprpaper = {
     enable = true;
     settings = {
-      preload = ["~/backgrounds/courbet.jpg" "~/backgrounds/skeleton_army.jpg" "~/backgrounds/wuzhen.jpg"];
+      preload = ["~/backgrounds/courbet.jpg" "~/backgrounds/skeleton_army.jpg" "~/backgrounds/nixos.png" "~/backgrounds/gabriel.jpg"];
       wallpaper = ["eDP-1,~/backgrounds/skeleton_army.jpg" "HDMI-A-1,~/backgrounds/skeleton_army.jpg" "DP-3,~/backgrounds/skeleton_army.jpg"];
     };
   };

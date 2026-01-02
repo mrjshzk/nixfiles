@@ -13,9 +13,41 @@
   boot.loader.efi.canTouchEfiVariables = true;
 
   # Networking
-  networking.networkmanager.enable = true;
-  networking.hostName = "nixxy";
+  networking.wireless.iwd = {
+    enable = true;
+    settings = {
+      Network = {
+        EnableIPv6 = true;
+        RoutePriorityOffset = 300;
+      };
+      Settings = {
+        AutoConnect = true;
+      };
+    };
+  };
 
+  # Bluetooth
+  hardware.bluetooth = {
+    enable = true;
+    powerOnBoot = true;
+    settings = {
+      General = {
+        # Shows battery charge of connected devices on supported
+        # Bluetooth adapters. Defaults to 'false'.
+        Experimental = true;
+        # When enabled other devices can connect faster to us, however
+        # the tradeoff is increased power consumption. Defaults to
+        # 'false'.
+        FastConnectable = true;
+      };
+      Policy = {
+        # Enable all controllers when they are found. This includes
+        # adapters present on start as well as adapters that are plugged
+        # in later on. Defaults to 'true'.
+        AutoEnable = true;
+      };
+    };
+  };
   # Set your time zone.
   time.timeZone = "Europe/Lisbon";
 
@@ -61,6 +93,8 @@
     # System utilities
     pciutils
     usbutils
+    glib
+    libnotify
 
     # Login
     wayland

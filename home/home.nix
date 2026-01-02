@@ -22,6 +22,9 @@
         source = ./kitty;
         recursive = true;
       };
+      ".config/dunst" = {
+        source = ./dunst;
+      };
     };
     packages = with pkgs; [
       # common utils
@@ -36,7 +39,6 @@
       wofi # App launcher
       dunst # Notifications
       hyprpaper # Wallpaper daemon
-      # TODO replace hyprlock
       kitty # Terminal
       starship # custom prompt
 
@@ -47,6 +49,9 @@
 
       # File manager
       yazi
+
+      bluetui
+      impala
 
       # Browsers
       librewolf

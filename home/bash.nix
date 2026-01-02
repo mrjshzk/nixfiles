@@ -6,6 +6,7 @@
   rebuild = host: ''
     wdr="$(pwd)"
     rm -r ~/.config/kitty
+    rm -r ~/.config/dunst
     cd ~/.config/nixos || exit 1
     sudo nixos-rebuild switch --flake .#${host}
     cd "$wdr"
@@ -24,6 +25,9 @@ in {
       config-edit = ''
         cd ~/.config/nixos || exit 1
         nvim .
+      '';
+      dunstdiddy = ''
+        killall .dunst-wrapped; notify-send 'hello broski'
       '';
     };
   };
