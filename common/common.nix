@@ -2,8 +2,17 @@
 {
   config,
   pkgs,
+  spicetify-nix,
   ...
-}: {
+}: let
+  spicetify = spicetify-nix.lib.mkSpicetify pkgs {
+    #config options
+  };
+in {
+  programs = {
+    spicetify.enable = true;
+    steam.enable = true;
+  };
   # ============================================
   # SYSTEM BASICS
   # ============================================

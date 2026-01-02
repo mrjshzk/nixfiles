@@ -18,6 +18,7 @@
       url = "github:nix-community/fenix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    spicetify-nix.url = "github:Gerg-L/spicetify-nix";
   };
 
   outputs = inputs @ {
@@ -27,6 +28,7 @@
     lazyvim,
     stylix,
     fenix,
+    spicetify-nix,
     ...
   }: {
     nixosConfigurations = {
@@ -39,7 +41,7 @@
           ./hosts/desktop/nvidia.nix
           ./common/common.nix
           ./common/hyprland_wm.nix
-
+          spicetify-nix.nixosModules.spicetify
           stylix.nixosModules.stylix
           # rust toolchain - fenix
           ({pkgs, ...}: {
@@ -62,7 +64,7 @@
             home-manager.users. mrjshzk = import ./home/home.nix;
 
             home-manager.extraSpecialArgs = {
-              inherit lazyvim;
+              inherit lazyvim inputs;
             };
           }
         ];

@@ -14,7 +14,6 @@
       "$fileManager" = "yazi";
       "$browser" = "librewolf";
       "$menu" = "wofi --show drun";
-      "$doomEmacs" = "emacs";
       "$wifi" = "impala";
       "$bluetooth" = "bluetui";
 
@@ -32,7 +31,6 @@
         "$mainMod, O, exec, ~/scripts/launch_tui.sh $bluetooth"
         "$mainMod, B, exec, $browser"
         "$mainMod, R, exec, $menu"
-        "$mainMod, D, exec, $doomEmacs"
         "$mainMod, M, exec, spotify"
         "$mainMod, C, exec, ~/scripts/launch_web_app.sh https://github.com/copilot"
         "$mainShiftMod, F, fullscreen"
