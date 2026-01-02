@@ -6,8 +6,9 @@
   # ============================================
   # WAYLAND/HYPRLAND ESSENTIALS
   # ============================================
-  programs.hyprland = {
-    enable = true;
+  programs = {
+    hyprland.enable = true;
+    steam.enable = true;
   };
 
   # ============================================

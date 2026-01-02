@@ -2,6 +2,7 @@
   config,
   pkgs,
   lazyvim,
+  spicetify-nix,
   ...
 }: {
   home = {
@@ -69,6 +70,7 @@
   };
 
   imports = [
+    spicetify-nix.homeManagerModules.spicetify
     ./colorscheme.nix
     ./nvim.nix
     ./bash.nix
@@ -80,6 +82,9 @@
     ./dunst.nix
     ./hyprland.nix
   ];
+  programs = {
+    spicetify.enable = true;
+  };
   programs.git = {
     enable = true;
     settings = {

@@ -35,13 +35,13 @@
       # Desktop with NVIDIA
       desktop = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
+
         modules = [
           ./hosts/desktop/configuration.nix
           ./hosts/desktop/hardware-configuration.nix
           ./hosts/desktop/nvidia.nix
           ./common/common.nix
           ./common/hyprland_wm.nix
-          spicetify-nix.nixosModules.spicetify
           stylix.nixosModules.stylix
           # rust toolchain - fenix
           ({pkgs, ...}: {
@@ -57,14 +57,15 @@
               pkgs.rust-analyzer-nightly
             ];
           })
+
           home-manager.nixosModules.home-manager
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-            home-manager.users. mrjshzk = import ./home/home.nix;
+            home-manager.users.mrjshzk = import ./home/home.nix;
 
             home-manager.extraSpecialArgs = {
-              inherit lazyvim inputs;
+              inherit lazyvim spicetify-nix inputs;
             };
           }
         ];
