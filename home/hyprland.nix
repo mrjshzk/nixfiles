@@ -10,7 +10,7 @@
       ####################
       ### VARIABLES ######
       ####################
-      "$terminal" = "kitty";
+      "$terminal" = "ghostty";
       "$fileManager" = "yazi";
       "$browser" = "librewolf";
       "$menu" = "wofi --show drun";

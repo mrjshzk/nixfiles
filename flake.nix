@@ -22,6 +22,7 @@
     nix-doom-emacs-unstraightened.url = "github:marienz/nix-doom-emacs-unstraightened";
     # Optional, to download less. Neither the module nor the overlay uses this input.
     nix-doom-emacs-unstraightened.inputs.nixpkgs.follows = "";
+    nix-colors.url = "github:misterio77/nix-colors";
   };
 
   outputs = inputs @ {
@@ -69,7 +70,7 @@
             home-manager.users.mrjshzk = import ./home/home.nix;
 
             home-manager.extraSpecialArgs = {
-              inherit lazyvim spicetify-nix inputs nix-doom-emacs-unstraightened;
+              inherit lazyvim spicetify-nix inputs nix-doom-emacs-unstraightened nix-colors;
             };
           }
         ];
@@ -105,7 +106,7 @@
             home-manager.useUserPackages = true;
             home-manager.users. mrjshzk = import ./home/home.nix;
             home-manager.extraSpecialArgs = {
-              inherit lazyvim;
+              inherit lazyvim spicetify-nix inputs nix-doom-emacs-unstraightened nix-colors;
             };
           }
         ];

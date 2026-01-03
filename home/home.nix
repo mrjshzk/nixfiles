@@ -5,8 +5,7 @@
   spicetify-nix,
   inputs,
   ...
-}:
-{
+}: {
   home = {
     file = {
       ".bashrc".text = ''
@@ -40,9 +39,9 @@
       # Hyprland essentials
       waybar # Status bar
       wofi # App launcher
-      dunst # Notifications
+      mako # Notifications
       hyprpaper # Wallpaper daemon
-      kitty # Terminal
+      ghostty # Terminal
       starship # custom prompt
 
       # Screenshot tools
@@ -100,17 +99,21 @@
   imports = [
     inputs.nix-doom-emacs-unstraightened.homeModule
     spicetify-nix.homeManagerModules.spicetify
-    ./colorscheme.nix
+    nix-colors.homeManagerModules.default
     ./nvim.nix
     ./bash.nix
-    ./kitty.nix
+    ./ghostty.nix
     ./waybar.nix
     ./wofi.nix
     ./hyprpaper.nix
     ./starship.nix
-    ./dunst.nix
+    ./mako.nix
     ./hyprland.nix
   ];
+
+  # Colorscheme
+  colorScheme = nix-colors.colorSchemes.dracula;
+
   programs = {
     doom-emacs = {
       enable = true;
