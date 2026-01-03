@@ -1,8 +1,4 @@
-{
-  pkgs,
-  nix-colors,
-  ...
-}: {
+{pkgs, ...}: {
   programs.ghostty = {
     enable = true;
     # Enable for whichever shell you plan to use!

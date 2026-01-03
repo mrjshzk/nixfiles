@@ -34,6 +34,7 @@
     fenix,
     spicetify-nix,
     nix-doom-emacs-unstraightened,
+    nix-colors,
     ...
   }: {
     nixosConfigurations = {

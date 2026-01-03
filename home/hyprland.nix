@@ -2,7 +2,8 @@
   config,
   pkgs,
   ...
-}: {
+}:
+{
   wayland.windowManager.hyprland = {
     enable = true;
 
@@ -99,10 +100,9 @@
         "dunst"
         "systemctl --user start hyprpolkitagent"
         "hyprpaper"
+        "emacs --daemon"
       ];
-      exec = [
-        "killall emacs && emacs --daemon"
-      ];
+
 
       ####################
       ### MONITORS #######
@@ -142,8 +142,8 @@
         gaps_in = 5;
         gaps_out = 20;
         border_size = 2;
-        "col.active_border" = "rgba(${builtins.substring 1 6 config.colorScheme.border_alt}FF)";
-        "col.inactive_border" = "rgba(${builtins.substring 1 6 config.colorScheme.border}FF)";
+        #"col.active_border" = "rgba(${builtins.substring 1 6 config.colorScheme.border_alt}FF)";
+        #"col.inactive_border" = "rgba(${builtins.substring 1 6 config.colorScheme.border}FF)";
         resize_on_border = false;
         allow_tearing = false;
         layout = "dwindle";
@@ -159,7 +159,7 @@
           enabled = true;
           range = 4;
           render_power = 3;
-          color = "rgba(${builtins.substring 1 6 config.colorScheme.border}FF)";
+          #color = "rgba(${builtins.substring 1 6 config.colorScheme.border}FF)";
         };
 
         blur = {

@@ -2,16 +2,16 @@
   config,
   pkgs,
   ...
-}: let
+}:
+let
   rebuild = host: ''
     wdr="$(pwd)"
-    rm -r ~/.config/kitty
-    rm -r ~/.config/dunst
     cd ~/.config/nixos || exit 1
     sudo nixos-rebuild switch --flake .#${host}
     cd "$wdr"
   '';
-in {
+in
+{
   programs.bash = {
     enable = true;
     shellAliases = {

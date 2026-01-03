@@ -3,6 +3,7 @@
   pkgs,
   lazyvim,
   spicetify-nix,
+  nix-colors,
   inputs,
   ...
 }: {
@@ -19,13 +20,6 @@
       "scripts" = {
         source = ./scripts;
         recursive = true;
-      };
-      ".config/kitty" = {
-        source = ./kitty;
-        recursive = true;
-      };
-      ".config/dunst" = {
-        source = ./dunst;
       };
     };
     packages = with pkgs; [
