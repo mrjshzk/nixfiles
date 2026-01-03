@@ -3,8 +3,10 @@
   pkgs,
   lazyvim,
   spicetify-nix,
+  inputs,
   ...
-}: {
+}:
+{
   home = {
     file = {
       ".bashrc".text = ''
@@ -65,11 +67,38 @@
       # langs
       python313
       python313Packages.pip
+      python313Packages.black
+      python313Packages.pyflakes
+      python313Packages.isort
+      pipenv
+      python313Packages.pytest
+
       go
+      gopls
+      gomodifytags
+      gotests
+      gore
+
+      cmake
+      gnumake
+
+      rocmPackages.clang
+      glslang
+
+      gdtoolkit_4
+
+      tree-sitter
+      pandoc
+
+      nixfmt
+
+      shfmt
+      shellcheck
     ];
   };
 
   imports = [
+    inputs.nix-doom-emacs-unstraightened.homeModule
     spicetify-nix.homeManagerModules.spicetify
     ./colorscheme.nix
     ./nvim.nix
@@ -83,6 +112,10 @@
     ./hyprland.nix
   ];
   programs = {
+    doom-emacs = {
+      enable = true;
+      doomDir = ./doomdir; # or e.g. `./doom.d` for a local configuration
+    };
     spicetify.enable = true;
   };
   programs.git = {

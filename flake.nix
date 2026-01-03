@@ -19,6 +19,9 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     spicetify-nix.url = "github:Gerg-L/spicetify-nix";
+    nix-doom-emacs-unstraightened.url = "github:marienz/nix-doom-emacs-unstraightened";
+    # Optional, to download less. Neither the module nor the overlay uses this input.
+    nix-doom-emacs-unstraightened.inputs.nixpkgs.follows = "";
   };
 
   outputs = inputs @ {
@@ -29,6 +32,7 @@
     stylix,
     fenix,
     spicetify-nix,
+    nix-doom-emacs-unstraightened,
     ...
   }: {
     nixosConfigurations = {
@@ -65,7 +69,7 @@
             home-manager.users.mrjshzk = import ./home/home.nix;
 
             home-manager.extraSpecialArgs = {
-              inherit lazyvim spicetify-nix inputs;
+              inherit lazyvim spicetify-nix inputs nix-doom-emacs-unstraightened;
             };
           }
         ];

@@ -30,9 +30,9 @@
         "$mainMod, I, exec, ~/scripts/launch_tui.sh $wifi"
         "$mainMod, O, exec, ~/scripts/launch_tui.sh $bluetooth"
         "$mainMod, B, exec, $browser"
+        "$mainMod, D, exec, emacsclient -c"
         "$mainMod, R, exec, $menu"
         "$mainMod, M, exec, spotify"
-        "$mainMod, C, exec, ~/scripts/launch_web_app.sh https://github.com/copilot"
         "$mainShiftMod, F, fullscreen"
         "$mainShiftMod, R, exec, ~/scripts/reload_everything.sh"
 
@@ -99,7 +99,9 @@
         "dunst"
         "systemctl --user start hyprpolkitagent"
         "hyprpaper"
-        "emacs --daemon"
+      ];
+      exec = [
+        "killall emacs && emacs --daemon"
       ];
 
       ####################
