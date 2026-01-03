@@ -5,5 +5,5 @@ layout=$1 # should be pt or us
 declare -A layout_mapping
 layout_mapping["pt"]=1
 layout_mapping["us"]=0
-
+notify-send "changed layout to ${layout}"
 hyprctl switchxkblayout all ${layout_mapping[${layout}]}

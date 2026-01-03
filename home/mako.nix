@@ -2,8 +2,9 @@
   config,
   pkgs,
   ...
-}: {
-  services.mako = {
+}:
+{
+  services.mako = with config.colorScheme.palette; {
     enable = true;
     settings = {
       "actionable=true" = {
@@ -11,16 +12,16 @@
       };
       actions = true;
       anchor = "top-right";
-      background-color = "#000000";
-      border-color = "#FFFFFF";
+      background-color = "#${base01}";
+      border-color = "#${base06}";
       border-radius = 0;
-      default-timeout = 0;
-      font = "monospace 10";
+      default-timeout = 5000;
+      font = "JetBrains Mono 16";
       height = 100;
       icons = true;
       ignore-timeout = false;
       layer = "top";
-      margin = 10;
+      margin = 30;
       markup = true;
       width = 300;
     };
