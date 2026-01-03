@@ -1,12 +1,16 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   programs.ghostty = {
     enable = true;
     # Enable for whichever shell you plan to use!
     enableBashIntegration = true;
 
     settings = {
-      theme = "Abernathy";
-      background-opacity = "0.75";
+      window-inherit-font-size = false;
+      font-size = 16;
+      window-padding-x = 20;
+      theme = "Gruvbox Dark";
+      background-opacity = "0.8";
     };
   };
 }

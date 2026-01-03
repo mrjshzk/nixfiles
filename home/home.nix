@@ -30,6 +30,7 @@
       fd
       fzf
       stow
+      tldr
 
       # Hyprland essentials
       waybar # Status bar
@@ -98,7 +99,7 @@
     ./nvim.nix
     ./bash.nix
     ./ghostty.nix
-    ./waybar.nix
+    ./waybar/waybar.nix
     ./wofi.nix
     ./hyprpaper.nix
     ./starship.nix
@@ -107,7 +108,7 @@
   ];
 
   # Colorscheme
-  colorScheme = nix-colors.colorSchemes.gruvbox-dark-hard;
+  colorScheme = nix-colors.colorSchemes.gruvbox-dark-medium;
 
   programs = {
     doom-emacs = {
