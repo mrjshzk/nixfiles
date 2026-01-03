@@ -40,7 +40,7 @@
         };
         "pulseaudio" = {
           format = "{volume}% {icon} ";
-          format-muted = "";
+          format-muted = " ";
           format-icons = {
             headphones = "";
             headset = "";
@@ -99,7 +99,7 @@
         color :  #ffffff;
         font-size :  20px;
         font-family :  "JetBrains Mono Propo";
-        color :  #${config.colorScheme.palette.base0F};
+        color :  #${config.colorScheme.palette.base05};
       }
 
       window#waybar {

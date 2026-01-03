@@ -6,7 +6,8 @@
   nix-colors,
   inputs,
   ...
-}: {
+}:
+{
   home = {
     file = {
       ".bashrc".text = ''
@@ -106,7 +107,7 @@
   ];
 
   # Colorscheme
-  colorScheme = nix-colors.colorSchemes.dracula;
+  colorScheme = nix-colors.colorSchemes.gruvbox-dark-hard;
 
   programs = {
     doom-emacs = {
