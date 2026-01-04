@@ -52,6 +52,7 @@
       # Browsers
       librewolf
       discord
+      vscodium
 
       # Other useful tools
       wiremix # tui for audio
