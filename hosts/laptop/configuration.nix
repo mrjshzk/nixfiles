@@ -1,3 +1,3 @@
 { pkgs, config, ... }:
 
-import ./keyboard-config.nix { inherit pkgs; } "pt"
+import ../../common/keyboard_config.nix { inherit pkgs; } "pt"
