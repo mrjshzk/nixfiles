@@ -53,6 +53,7 @@
 
       # Browsers
       librewolf
+      discord
 
       # Other useful tools
       wiremix # tui for audio
@@ -84,6 +85,7 @@
 
       tree-sitter
       pandoc
+      nodejs_24
 
       nixfmt
 
