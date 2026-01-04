@@ -5,6 +5,7 @@
       min-height :  0;
       padding :  0;
       margin :  0;
+      color :  #ffffff;
       font-size :  20px;
       font-family :  "JetBrains Mono Propo";
       color :  #${base07};

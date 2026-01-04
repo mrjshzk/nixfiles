@@ -58,6 +58,11 @@
       wiremix # tui for audio
       brightnessctl # Screen brightness
       playerctl # Media control
+      font-awesome
+      roboto
+      fastfetch
+      mpd
+      mpc
 
       # langs
       prettier
@@ -128,6 +133,10 @@
       };
       init.defaultBranch = "main";
     };
+  };
+
+  programs.quickshell = {
+    enable = true;
   };
 
   # System version (don't change this)
