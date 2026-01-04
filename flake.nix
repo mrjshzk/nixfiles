@@ -44,16 +44,23 @@
             ./common/hyprland_wm.nix
             ./common/rust.nix
             ./common/home_manager.nix
-            ./hosts/${hostname}/configuration.nix
             ./hosts/${hostname}/hardware-configuration.nix
+            ./modules/keyboard_layout/keyboard_layout.nix
           ]
           ++ extraModules;
         };
     in
     {
       nixosConfigurations = {
-        desktop = mkSystem "desktop" [ ./hosts/desktop/nvidia.nix ];
-        laptop = mkSystem "laptop" [ ./hosts/laptop/intel-gpu.nix ];
+        desktop = mkSystem "desktop" [
+          ./hosts/desktop/nvidia.nix
+          { keyboard.layout = "us"; }
+        ];
+
+        laptop = mkSystem "laptop" [
+          ./hosts/laptop/intel-gpu.nix
+          { keyboard.layout = "pt"; }
+        ];
       };
     };
 }
