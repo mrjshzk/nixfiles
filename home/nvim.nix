@@ -1,9 +1,9 @@
 {
-  config,
   pkgs,
   lazyvim,
   ...
-}: {
+}:
+{
   home.packages = with pkgs; [
     deadnix
     statix
@@ -22,7 +22,7 @@
     vimPlugins.rustaceanvim
   ];
 
-  imports = [lazyvim.homeManagerModules.default];
+  imports = [ lazyvim.homeManagerModules.default ];
 
   programs.lazyvim = {
     enable = true;

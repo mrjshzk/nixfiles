@@ -1,7 +1,5 @@
 {
-  config,
   pkgs,
-  lazyvim,
   spicetify-nix,
   nix-colors,
   inputs,
@@ -61,6 +59,7 @@
       playerctl # Media control
 
       # langs
+      prettier
       python313
       python313Packages.pip
       python313Packages.black
