@@ -11,6 +11,7 @@
       window-padding-x = 20;
       theme = "Gruvbox Dark";
       background-opacity = "0.8";
+      shell-integration-features = "ssh-terminfo";
     };
   };
 }

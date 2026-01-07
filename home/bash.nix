@@ -1,13 +1,13 @@
 {
-  config,
-  pkgs,
+  hostname,
   ...
 }:
 let
-  rebuild = host: ''
+  rebuild = ''
     wdr="$(pwd)"
     cd ~/.config/nixos || exit 1
-    sudo nixos-rebuild switch --flake .#${host}
+    echo 'Rebuilding NixOS for host: ${hostname}'
+    sudo nixos-rebuild switch --flake .#${hostname}
     cd "$wdr"
   '';
 in
@@ -18,17 +18,15 @@ in
       ls = "ls --color=auto";
       grep = "rg --color=auto";
 
-      desktop-rebuild = rebuild "desktop";
-      laptop-rebuild = rebuild "laptop";
+      nrs = rebuild;
 
       ".." = "cd ..";
-      config-edit = ''
+      cfgnix = ''
         cd ~/.config/nixos || exit 1
-        nvim .
+        emacs .
       '';
-      dunstdiddy = ''
-        killall .dunst-wrapped; notify-send 'hello broski'
-      '';
+
+      server-shh = "ssh mrjshzk@38.19.200.156";
     };
   };
 }

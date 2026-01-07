@@ -1,4 +1,4 @@
-{ inputs, ... }:
+{ inputs, config, ... }:
 
 {
   imports = [ inputs.home-manager.nixosModules.home-manager ];
@@ -15,6 +15,8 @@
         nix-doom-emacs-unstraightened
         nix-colors
         ;
+
+      hostname = config.host.hostname;
     };
   };
 }

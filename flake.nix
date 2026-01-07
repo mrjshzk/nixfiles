@@ -35,31 +35,35 @@
     inputs@{ nixpkgs, ... }:
     let
       mkSystem =
-        hostname: extraModules:
+        hostname: keyboardLayout: extraModules:
         nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
-          specialArgs = { inherit inputs; };
-          modules = [
+          specialArgs = {
+            inherit inputs;
+          };
+          modules = extraModules ++ [
+            ./hosts/${hostname}/hardware-configuration.nix
             ./common/common.nix
             ./common/hyprland_wm.nix
             ./common/rust.nix
             ./common/home_manager.nix
-            ./hosts/${hostname}/hardware-configuration.nix
-            ./modules/keyboard_layout/keyboard_layout.nix
-          ]
-          ++ extraModules;
+            ./modules/user_services/user_services.nix
+            {
+              keyboard.layout = keyboardLayout;
+              host.hostname = "${hostname}";
+            }
+          ];
+
         };
     in
     {
       nixosConfigurations = {
-        desktop = mkSystem "desktop" [
+        desktop = mkSystem "desktop" "us" [
           ./hosts/desktop/nvidia.nix
-          { keyboard.layout = "us"; }
         ];
 
-        laptop = mkSystem "laptop" [
+        laptop = mkSystem "laptop" "pt" [
           ./hosts/laptop/intel-gpu.nix
-          { keyboard.layout = "pt"; }
         ];
       };
     };
