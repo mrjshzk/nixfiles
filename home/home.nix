@@ -121,6 +121,13 @@
       eslint
       live-server
 
+      # neovim snacks tools
+      imagemagick
+      git-spice
+      tectonic
+      mermaid-cli
+      lazygit
+
     ];
   };
 
