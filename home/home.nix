@@ -83,7 +83,16 @@
       cmake
       gnumake
 
-      rocmPackages.clang
+      (pkgs.clang-tools.overrideAttrs (oldAttrs: {
+        meta.priority = 9;
+      }))
+      (pkgs.clang.overrideAttrs (oldAttrs: {
+        meta.priority = 10;
+      }))
+      (pkgs.gcc.overrideAttrs (oldAttrs: {
+        meta.priority = 20;
+      }))
+
       glslang
 
       gdtoolkit_4
@@ -96,6 +105,22 @@
 
       shfmt
       shellcheck
+
+      # arduino
+      arduino-core
+      arduino-cli
+
+      luajit
+      luajitPackages.luarocks-nix
+      lua-language-server
+      stylua
+
+      vscode-langservers-extracted
+      nil
+      typescript-language-server
+      eslint
+      live-server
+
     ];
   };
 
@@ -103,7 +128,6 @@
     inputs.nix-doom-emacs-unstraightened.homeModule
     spicetify-nix.homeManagerModules.spicetify
     nix-colors.homeManagerModules.default
-    ./nvim.nix
     ./bash.nix
     ./ghostty.nix
     ./waybar/waybar.nix
@@ -137,6 +161,12 @@
 
   programs.quickshell = {
     enable = true;
+  };
+
+  programs.neovim = {
+    enable = true;
+    viAlias = true;
+    vimAlias = true;
   };
 
   # System version (don't change this)

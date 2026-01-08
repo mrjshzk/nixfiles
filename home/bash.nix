@@ -1,8 +1,4 @@
-{
-  hostname,
-  ...
-}:
-let
+{hostname, ...}: let
   rebuild = ''
     wdr="$(pwd)"
     cd ~/.config/nixos || exit 1
@@ -10,8 +6,7 @@ let
     sudo nixos-rebuild switch --flake .#${hostname}
     cd "$wdr"
   '';
-in
-{
+in {
   programs.bash = {
     enable = true;
     shellAliases = {
@@ -22,11 +17,11 @@ in
 
       ".." = "cd ..";
       cfgnix = ''
-        cd ~/.config/nixos || exit 1
-        emacs .
+        nvim ~/.config/nixos
       '';
 
       server-shh = "ssh mrjshzk@38.19.200.156";
+      server = "38.19.200.156";
     };
   };
 }

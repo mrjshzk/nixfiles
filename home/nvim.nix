@@ -2,8 +2,7 @@
   pkgs,
   lazyvim,
   ...
-}:
-{
+}: {
   home.packages = with pkgs; [
     deadnix
     statix
@@ -22,7 +21,7 @@
     vimPlugins.rustaceanvim
   ];
 
-  imports = [ lazyvim.homeManagerModules.default ];
+  imports = [lazyvim.homeManagerModules.default];
 
   programs.lazyvim = {
     enable = true;
@@ -61,6 +60,7 @@
       };
     };
     treesitterParsers = with pkgs.vimPlugins.nvim-treesitter-parsers; [
+      cpp
       css
       scss
       latex
@@ -122,6 +122,24 @@
               filetypes = { "lua", "css", "nix", "conf" },
             })
           end
+        }
+      '';
+      arduino = ''
+        return {
+          "yuukiflow/Arduino-Nvim",
+          dependencies = {
+            "nvim-telescope/telescope.nvim",
+            "neovim/nvim-lspconfig",
+          },
+          config = function()
+            -- Load Arduino plugin for .ino files
+            vim.api.nvim_create_autocmd("FileType", {
+              pattern = "arduino",
+              callback = function()
+                require("Arduino-Nvim")
+              end,
+            })
+          end,
         }
       '';
     };

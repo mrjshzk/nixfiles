@@ -10,7 +10,6 @@
     extraSpecialArgs = {
       inherit inputs;
       inherit (inputs)
-        lazyvim
         spicetify-nix
         nix-doom-emacs-unstraightened
         nix-colors

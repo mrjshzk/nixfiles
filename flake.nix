@@ -8,7 +8,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    lazyvim.url = "github:pfassina/lazyvim-nix";
     hyprland.url = "github:hyprwm/Hyprland";
     fenix = {
       url = "github:nix-community/fenix";
@@ -49,7 +48,7 @@
             ./common/home_manager.nix
             ./modules/user_services/user_services.nix
             {
-              keyboard.layout = keyboardLayout;
+              keyboard.layout = "${keyboardLayout}";
               host.hostname = "${hostname}";
             }
           ];
