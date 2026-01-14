@@ -1,7 +1,13 @@
-{ inputs, config, ... }:
+{
+  inputs,
+  config,
+  ...
+}:
 
 {
-  imports = [ inputs.home-manager.nixosModules.home-manager ];
+  imports = [
+    inputs.home-manager.nixosModules.home-manager
+  ];
 
   home-manager = {
     useGlobalPkgs = true;
@@ -11,8 +17,6 @@
       inherit inputs;
       inherit (inputs)
         spicetify-nix
-        nix-doom-emacs-unstraightened
-        nix-colors
         ;
 
       hostname = config.host.hostname;

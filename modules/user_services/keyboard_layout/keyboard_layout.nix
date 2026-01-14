@@ -8,12 +8,11 @@
 {
   options.keyboard.layout = lib.mkOption {
     type = lib.types.str;
-    default = "us";
-    description = "Keyboard layout short name (eg: 'us')";
+    description = "laptop for pt, desktop for us";
   };
 
   config = {
-    services.xserver.xkb.layout = config.keyboard.layout;
+    # services.xserver.xkb.layout = config.keyboard.layout;
 
     systemd.user.services.host_specific_boot = {
       after = [ "network.target" ];
@@ -27,7 +26,7 @@
       ];
       serviceConfig = {
         Type = "oneshot";
-        ExecStartPre = "${pkgs.coreutils}/bin/sleep 2";
+        ExecStartPre = "${pkgs.coreutils}/bin/sleep 5";
         ExecStart = "${pkgs.bash}/bin/bash %h/scripts/switch_keyboard.sh ${config.keyboard.layout}";
       };
     };

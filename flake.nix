@@ -2,6 +2,7 @@
   description = "mrjshzk nix configuration";
 
   inputs = {
+
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -14,11 +15,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     spicetify-nix.url = "github:Gerg-L/spicetify-nix";
-    nix-doom-emacs-unstraightened = {
-      url = "github:marienz/nix-doom-emacs-unstraightened";
-      inputs.nixpkgs.follows = "";
-    };
-    nix-colors.url = "github:misterio77/nix-colors";
     quickshell = {
       # add ?ref=<tag> to track a tag
       url = "git+https://git.outfoxxed.me/outfoxxed/quickshell";
@@ -28,19 +24,25 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    nix-ld.url = "github:Mic92/nix-ld";
+    # this line assume that you also have nixpkgs as an input
+    nix-ld.inputs.nixpkgs.follows = "nixpkgs";
+
   };
 
   outputs =
-    inputs@{ nixpkgs, ... }:
+    inputs@{ nix-ld, nixpkgs, ... }:
     let
       mkSystem =
-        hostname: keyboardLayout: extraModules:
+        hostname: extraModules:
         nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           specialArgs = {
             inherit inputs;
           };
           modules = extraModules ++ [
+
+            nix-ld.nixosModules.nix-ld
             ./hosts/${hostname}/hardware-configuration.nix
             ./common/common.nix
             ./common/hyprland_wm.nix
@@ -48,8 +50,11 @@
             ./common/home_manager.nix
             ./modules/user_services/user_services.nix
             {
-              keyboard.layout = "${keyboardLayout}";
+              keyboard.layout = "${hostname}";
               host.hostname = "${hostname}";
+
+              programs.nix-ld.dev.enable = true;
+
             }
           ];
 
@@ -57,11 +62,11 @@
     in
     {
       nixosConfigurations = {
-        desktop = mkSystem "desktop" "us" [
+        desktop = mkSystem "desktop" [
           ./hosts/desktop/nvidia.nix
         ];
 
-        laptop = mkSystem "laptop" "pt" [
+        laptop = mkSystem "laptop" [
           ./hosts/laptop/intel-gpu.nix
         ];
       };

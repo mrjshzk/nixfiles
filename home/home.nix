@@ -1,11 +1,10 @@
 {
   pkgs,
   spicetify-nix,
-  nix-colors,
-  inputs,
   ...
 }:
 {
+
   home = {
     file = {
       ".bashrc".text = ''
@@ -79,6 +78,7 @@
       gomodifytags
       gotests
       gore
+      air
 
       cmake
       gnumake
@@ -112,22 +112,17 @@
 
       luajit
       luajitPackages.luarocks-nix
-      lua-language-server
-      stylua
 
-      vscode-langservers-extracted
-      nil
-      typescript-language-server
-      eslint
-      live-server
+
+      kdePackages.qtdeclarative
+      kdePackages.qtwayland
+      quickshell
 
     ];
   };
 
   imports = [
-    inputs.nix-doom-emacs-unstraightened.homeModule
     spicetify-nix.homeManagerModules.spicetify
-    nix-colors.homeManagerModules.default
     ./bash.nix
     ./ghostty.nix
     ./waybar/waybar.nix
@@ -138,13 +133,12 @@
     ./hyprland.nix
   ];
 
-  # Colorscheme
-  colorScheme = nix-colors.colorSchemes.gruvbox-dark-medium;
-
   programs = {
-    doom-emacs = {
+
+    direnv = {
       enable = true;
-      doomDir = ./doomdir; # or e.g. `./doom.d` for a local configuration
+      enableBashIntegration = true; # see note on other shells below
+      nix-direnv.enable = true;
     };
     spicetify.enable = true;
   };
@@ -153,14 +147,10 @@
     settings = {
       user = {
         name = "mrjshzk";
-        email = "mrjsilva05@gmail.com";
+        email = "miguelklogsilva@gmail.com";
       };
       init.defaultBranch = "main";
     };
-  };
-
-  programs.quickshell = {
-    enable = true;
   };
 
   programs.neovim = {

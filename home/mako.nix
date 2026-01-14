@@ -1,10 +1,8 @@
 {
-  config,
-  pkgs,
   ...
 }:
 {
-  services.mako = with config.colorScheme.palette; {
+  services.mako = {
     enable = true;
     settings = {
       "actionable=true" = {
@@ -12,8 +10,6 @@
       };
       actions = true;
       anchor = "top-right";
-      background-color = "#${base01}";
-      border-color = "#${base06}";
       border-radius = 0;
       default-timeout = 5000;
       font = "JetBrains Mono 16";
