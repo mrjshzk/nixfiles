@@ -1,9 +1,4 @@
-{
-  config,
-  pkgs,
-  ...
-}:
-{
+{ config, pkgs, ... }: {
   wayland.windowManager.hyprland = {
     enable = true;
 
@@ -96,13 +91,10 @@
       ### AUTOSTART ######
       ####################
       exec-once = [
-        "waybar"
-        "dunst"
-        "systemctl --user start hyprpolkitagent"
-        "hyprpaper"
-        "emacs --daemon"
+        "quickshell &"
+        "systemctl --user start hyprpolkitagent &"
+        "hyprpaper &"
       ];
-
 
       ####################
       ### MONITORS #######
@@ -122,18 +114,13 @@
         follow_mouse = 1;
         sensitivity = 0;
 
-        touchpad = {
-          natural_scroll = false;
-        };
+        touchpad = { natural_scroll = false; };
       };
 
       ####################
       ### ENV VARS #######
       ####################
-      env = [
-        "XCURSOR_SIZE,24"
-        "HYPRCURSOR_SIZE,24"
-      ];
+      env = [ "XCURSOR_SIZE,24" "HYPRCURSOR_SIZE,24" ];
 
       ####################
       ### GENERAL ########
@@ -207,9 +194,7 @@
         preserve_split = true;
       };
 
-      master = {
-        new_status = "master";
-      };
+      master = { new_status = "master"; };
 
       misc = {
         force_default_wallpaper = -1;
