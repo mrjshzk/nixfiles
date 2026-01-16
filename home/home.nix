@@ -1,9 +1,4 @@
-{
-  pkgs,
-  spicetify-nix,
-  ...
-}:
-{
+{ pkgs, spicetify-nix, ... }: {
 
   home = {
     file = {
@@ -32,7 +27,6 @@
       # Hyprland essentials
       waybar # Status bar
       wofi # App launcher
-      mako # Notifications
       hyprpaper # Wallpaper daemon
       ghostty # Terminal
       starship # custom prompt
@@ -64,7 +58,6 @@
       mpc
 
       # langs
-      prettier
       python313
       python313Packages.pip
       python313Packages.black
@@ -82,16 +75,12 @@
 
       cmake
       gnumake
+      arduino-cli
+      platformio
 
-      (pkgs.clang-tools.overrideAttrs (oldAttrs: {
-        meta.priority = 9;
-      }))
-      (pkgs.clang.overrideAttrs (oldAttrs: {
-        meta.priority = 10;
-      }))
-      (pkgs.gcc.overrideAttrs (oldAttrs: {
-        meta.priority = 20;
-      }))
+      (pkgs.clang-tools.overrideAttrs (oldAttrs: { meta.priority = 9; }))
+      (pkgs.clang.overrideAttrs (oldAttrs: { meta.priority = 10; }))
+      (pkgs.gcc.overrideAttrs (oldAttrs: { meta.priority = 20; }))
 
       glslang
 
@@ -99,24 +88,20 @@
 
       tree-sitter
       pandoc
-      nodejs_24
-
-      nixfmt
 
       shfmt
       shellcheck
 
-      # arduino
-      arduino-core
-      arduino-cli
-
       luajit
       luajitPackages.luarocks-nix
-
 
       kdePackages.qtdeclarative
       kdePackages.qtwayland
       quickshell
+      lazygit
+      brotli
+      blender
+      libxxf86vm
 
     ];
   };
@@ -129,7 +114,6 @@
     ./wofi.nix
     ./hyprpaper.nix
     ./starship.nix
-    ./mako.nix
     ./hyprland.nix
   ];
 

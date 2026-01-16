@@ -1,8 +1,4 @@
-{
-  pkgs,
-  config,
-  ...
-}:
+{ pkgs, config, ... }:
 let
   # Create a derivation that contains your wallpapers
   wallpaperDir = pkgs.runCommand "wallpapers" { } ''
@@ -12,20 +8,14 @@ let
 
   backgroundDir = "${wallpaperDir}";
 
-  wallpapers = map (name: "${backgroundDir}/${name}") (
-    builtins.attrNames (builtins.readDir wallpaperDir)
-  );
+  wallpapers = map (name: "${backgroundDir}/${name}")
+    (builtins.attrNames (builtins.readDir wallpaperDir));
 
-  defaultWallpaper = "cat_at_play.png";
+  defaultWallpaper = "bean_gradient.png";
   defaultWallpaperPath = "${backgroundDir}/${defaultWallpaper}";
 
-  monitors = [
-    "eDP-1"
-    "HDMI-A-1"
-    "DP-3"
-  ];
-in
-{
+  monitors = [ "eDP-1" "HDMI-A-1" "DP-3" ];
+in {
   services.hyprpaper = {
     enable = true;
     settings = {

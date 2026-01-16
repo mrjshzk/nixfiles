@@ -1,11 +1,5 @@
 # common/common. nix
-{
-  config,
-  pkgs,
-  spicetify-nix,
-  ...
-}:
-{
+{ config, pkgs, spicetify-nix, ... }: {
   # ============================================
   # SYSTEM BASICS
   # ============================================
@@ -22,9 +16,7 @@
         EnableIPv6 = true;
         RoutePriorityOffset = 300;
       };
-      Settings = {
-        AutoConnect = true;
-      };
+      Settings = { AutoConnect = true; };
     };
   };
 
@@ -75,12 +67,7 @@
     # Your username
     isNormalUser = true;
     description = "Miguel Silva";
-    extraGroups = [
-      "networkmanager"
-      "wheel"
-      "video"
-      "audio"
-    ];
+    extraGroups = [ "networkmanager" "wheel" "video" "audio" ];
     shell = pkgs.bash;
   };
 
@@ -113,10 +100,7 @@
   # ============================================
 
   nix.settings = {
-    experimental-features = [
-      "nix-command"
-      "flakes"
-    ];
+    experimental-features = [ "nix-command" "flakes" ];
     auto-optimise-store = true;
   };
 
@@ -140,6 +124,7 @@
     pulse.enable = true;
     jack.enable = true;
   };
+  services.upower.enable = true;
 
   # ============================================
   # FONTS
@@ -224,10 +209,24 @@
     xorg.libXrender
     xorg.libXinerama
     xorg.libXfixes
-
-    # Often needed by GUI apps
-    freetype
+    xorg.libXxf86vm
+    pulseaudio
+    xorg.libSM
+    xorg.libICE
     fontconfig
+    dbus
+    glib
+    atk
+    pango
+    cairo
+    alsa-lib
+
+    gdk-pixbuf
+    freetype
+    expat
+    libdrm
+    mesa
+    udev
   ];
 
   system.stateVersion = "25.11";

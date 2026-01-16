@@ -1,13 +1,8 @@
-{
-  ...
-}:
-{
+{ ... }: {
   services.mako = {
-    enable = true;
+    enable = false;
     settings = {
-      "actionable=true" = {
-        anchor = "top-left";
-      };
+      "actionable=true" = { anchor = "top-left"; };
       actions = true;
       anchor = "top-right";
       border-radius = 0;
