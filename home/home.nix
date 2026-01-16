@@ -108,7 +108,7 @@
       git-spice
       tectonic
       mermaid-cli
-      lazygit
+      nodejs_24
 
     ];
   };
@@ -138,7 +138,7 @@
     settings = {
       user = {
         name = "mrjshzk";
-        email = "miguelklogsilva@gmail.com";
+        email = "mrjsilva05@gmail.com";
       };
       init.defaultBranch = "main";
     };
