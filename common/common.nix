@@ -1,10 +1,5 @@
 # common/common. nix
-{
-  config,
-  pkgs,
-  spicetify-nix,
-  ...
-}: {
+{ config, pkgs, spicetify-nix, ... }: {
   # ============================================
   # SYSTEM BASICS
   # ============================================
@@ -21,9 +16,7 @@
         EnableIPv6 = true;
         RoutePriorityOffset = 300;
       };
-      Settings = {
-        AutoConnect = true;
-      };
+      Settings = { AutoConnect = true; };
     };
   };
 
@@ -74,7 +67,7 @@
     # Your username
     isNormalUser = true;
     description = "Miguel Silva";
-    extraGroups = ["networkmanager" "wheel" "video" "audio"];
+    extraGroups = [ "networkmanager" "wheel" "video" "audio" ];
     shell = pkgs.bash;
   };
 
@@ -107,7 +100,7 @@
   # ============================================
 
   nix.settings = {
-    experimental-features = ["nix-command" "flakes"];
+    experimental-features = [ "nix-command" "flakes" ];
     auto-optimise-store = true;
   };
 
@@ -128,9 +121,10 @@
     enable = true;
     alsa.enable = true;
     alsa.support32Bit = true;
-    pulse. enable = true;
-    jack. enable = true;
+    pulse.enable = true;
+    jack.enable = true;
   };
+  services.upower.enable = true;
 
   # ============================================
   # FONTS
@@ -150,7 +144,7 @@
   # SECURITY & POLKIT
   # ============================================
 
-  security.polkit. enable = true;
+  security.polkit.enable = true;
 
   # ============================================
   # SERVICES
@@ -159,7 +153,7 @@
   # Enable SSH (optional, but useful)
   services.openssh = {
     enable = true;
-    settings. PermitRootLogin = "no";
+    settings.PermitRootLogin = "no";
   };
 
   # Enable CUPS for printing (if needed)
@@ -188,6 +182,52 @@
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
+
+  programs.nix-ld.dev.libraries = with pkgs; [
+    # Provides the dynamic loader + libstdc++/libgcc runtime
+    stdenv.cc.cc
+
+    # Very commonly needed by downloaded binaries
+    zlib
+    openssl
+    curl
+
+    # Wayland stack
+    wayland
+    libxkbcommon
+
+    # Vulkan / OpenGL userspace loaders
+    vulkan-loader
+    libGL
+
+    # Many apps still pull X11 libs even on Wayland (via XWayland)
+    xorg.libX11
+    xorg.libXcursor
+    xorg.libXext
+    xorg.libXi
+    xorg.libXrandr
+    xorg.libXrender
+    xorg.libXinerama
+    xorg.libXfixes
+    xorg.libXxf86vm
+    pulseaudio
+    xorg.libSM
+    xorg.libICE
+    fontconfig
+    dbus
+    glib
+    atk
+    pango
+    cairo
+    alsa-lib
+
+    gdk-pixbuf
+    freetype
+    expat
+    libdrm
+    mesa
+    udev
+  ];
 
   system.stateVersion = "25.11";
 }

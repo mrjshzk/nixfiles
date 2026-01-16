@@ -1,11 +1,5 @@
-{
-  pkgs,
-  spicetify-nix,
-  nix-colors,
-  inputs,
-  ...
-}:
-{
+{ pkgs, spicetify-nix, ... }: {
+
   home = {
     file = {
       ".bashrc".text = ''
@@ -33,7 +27,6 @@
       # Hyprland essentials
       waybar # Status bar
       wofi # App launcher
-      mako # Notifications
       hyprpaper # Wallpaper daemon
       ghostty # Terminal
       starship # custom prompt
@@ -65,7 +58,6 @@
       mpc
 
       # langs
-      prettier
       python313
       python313Packages.pip
       python313Packages.black
@@ -79,19 +71,16 @@
       gomodifytags
       gotests
       gore
+      air
 
       cmake
       gnumake
+      arduino-cli
+      platformio
 
-      (pkgs.clang-tools.overrideAttrs (oldAttrs: {
-        meta.priority = 9;
-      }))
-      (pkgs.clang.overrideAttrs (oldAttrs: {
-        meta.priority = 10;
-      }))
-      (pkgs.gcc.overrideAttrs (oldAttrs: {
-        meta.priority = 20;
-      }))
+      (pkgs.clang-tools.overrideAttrs (oldAttrs: { meta.priority = 9; }))
+      (pkgs.clang.overrideAttrs (oldAttrs: { meta.priority = 10; }))
+      (pkgs.gcc.overrideAttrs (oldAttrs: { meta.priority = 20; }))
 
       glslang
 
@@ -99,27 +88,20 @@
 
       tree-sitter
       pandoc
-      nodejs_24
-
-      nixfmt
 
       shfmt
       shellcheck
 
-      # arduino
-      arduino-core
-      arduino-cli
-
       luajit
       luajitPackages.luarocks-nix
-      lua-language-server
-      stylua
 
-      vscode-langservers-extracted
-      nil
-      typescript-language-server
-      eslint
-      live-server
+      kdePackages.qtdeclarative
+      kdePackages.qtwayland
+      quickshell
+      lazygit
+      brotli
+      blender
+      libxxf86vm
 
       # neovim snacks tools
       imagemagick
@@ -132,26 +114,22 @@
   };
 
   imports = [
-    inputs.nix-doom-emacs-unstraightened.homeModule
     spicetify-nix.homeManagerModules.spicetify
-    nix-colors.homeManagerModules.default
     ./bash.nix
     ./ghostty.nix
     ./waybar/waybar.nix
     ./wofi.nix
     ./hyprpaper.nix
     ./starship.nix
-    ./mako.nix
     ./hyprland.nix
   ];
 
-  # Colorscheme
-  colorScheme = nix-colors.colorSchemes.gruvbox-dark-medium;
-
   programs = {
-    doom-emacs = {
+
+    direnv = {
       enable = true;
-      doomDir = ./doomdir; # or e.g. `./doom.d` for a local configuration
+      enableBashIntegration = true; # see note on other shells below
+      nix-direnv.enable = true;
     };
     spicetify.enable = true;
   };
@@ -160,14 +138,10 @@
     settings = {
       user = {
         name = "mrjshzk";
-        email = "mrjsilva05@gmail.com";
+        email = "miguelklogsilva@gmail.com";
       };
       init.defaultBranch = "main";
     };
-  };
-
-  programs.quickshell = {
-    enable = true;
   };
 
   programs.neovim = {
