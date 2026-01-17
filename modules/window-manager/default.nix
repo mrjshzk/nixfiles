@@ -16,7 +16,6 @@ with lib;
 
     isWayland = mkOption {
       type = types.bool;
-      default = builtins.elem config.windowManager.name [ "hyprland" "sway" ];
       description = "Whether the window manager uses Wayland";
     };
 
@@ -73,5 +72,10 @@ with lib;
         description = "Path to the wallpaper image";
       };
     };
+  };
+
+  config = {
+    # Set isWayland based on the window manager name
+    windowManager.isWayland = mkDefault (builtins.elem config.windowManager.name [ "hyprland" "sway" ]);
   };
 }

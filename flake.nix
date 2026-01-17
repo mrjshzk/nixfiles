@@ -40,7 +40,7 @@
       mkSystem = hostname: extraModules:
         nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
-          specialArgs = { inherit inputs sharedConfig; };
+          specialArgs = { inherit inputs; };
           modules = extraModules ++ [
 
             nix-ld.nixosModules.nix-ld
