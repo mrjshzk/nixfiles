@@ -30,25 +30,20 @@
 
   };
 
-  outputs =
-    inputs@{ nix-ld, nixpkgs, ... }:
+  outputs = inputs@{ nix-ld, nixpkgs, ... }:
     let
-      mkSystem =
-        hostname: extraModules:
+      mkSystem = hostname: extraModules:
         nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
-          specialArgs = {
-            inherit inputs;
-          };
+          specialArgs = { inherit inputs; };
           modules = extraModules ++ [
 
             nix-ld.nixosModules.nix-ld
             ./hosts/${hostname}/hardware-configuration.nix
-            ./common/common.nix
-            ./common/hyprland_wm.nix
-            ./common/rust.nix
-            ./common/home_manager.nix
+            ./langs/langs.nix
             ./modules/user_services/user_services.nix
+            ./wm/window_manager.nix
+            ./main.nix
             {
               keyboard.layout = "${hostname}";
               host.hostname = "${hostname}";
@@ -59,16 +54,11 @@
           ];
 
         };
-    in
-    {
+    in {
       nixosConfigurations = {
-        desktop = mkSystem "desktop" [
-          ./hosts/desktop/nvidia.nix
-        ];
+        desktop = mkSystem "desktop" [ ./hosts/desktop/nvidia.nix ];
 
-        laptop = mkSystem "laptop" [
-          ./hosts/laptop/intel-gpu.nix
-        ];
+        laptop = mkSystem "laptop" [ ./hosts/laptop/intel-gpu.nix ];
       };
     };
 }

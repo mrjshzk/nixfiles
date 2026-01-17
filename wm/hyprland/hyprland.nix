@@ -1,14 +1,10 @@
-{
-  config,
-  pkgs,
-  ...
-}: {
+{ config, pkgs, ... }: {
   # ============================================
   # WAYLAND/HYPRLAND ESSENTIALS
   # ============================================
-  programs = {
-    hyprland.enable = true;
-    steam.enable = true;
+  programs.hyprland = {
+    enable = true;
+
   };
 
   # ============================================
@@ -17,7 +13,7 @@
 
   xdg.portal = {
     enable = true;
-    extraPortals = [pkgs.xdg-desktop-portal-gtk];
+    extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
     config.common.default = "*";
   };
 

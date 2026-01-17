@@ -119,9 +119,9 @@
     ./ghostty.nix
     ./waybar/waybar.nix
     ./wofi.nix
-    ./hyprpaper.nix
+    ./hyprpaper.nix # TODO replace with wpaperd
     ./starship.nix
-    ./hyprland.nix
+    ./hm_hyprland.nix # HACK
   ];
 
   programs = {

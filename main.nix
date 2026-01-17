@@ -1,8 +1,8 @@
-# common/common. nix
 { config, pkgs, spicetify-nix, ... }: {
   # ============================================
   # SYSTEM BASICS
   # ============================================
+  imports = [ ./hm_bootstrapper.nix ];
 
   # Boot loader
   boot.loader.systemd-boot.enable = true;
