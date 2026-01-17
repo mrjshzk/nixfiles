@@ -43,7 +43,7 @@
             ./langs/langs.nix
             ./modules/user_services/user_services.nix
             ./wm/window_manager.nix
-            ./main.nix
+            ./main/main.nix
             {
               keyboard.layout = "${hostname}";
               host.hostname = "${hostname}";

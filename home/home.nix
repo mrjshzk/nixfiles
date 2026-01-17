@@ -117,7 +117,6 @@
     spicetify-nix.homeManagerModules.spicetify
     ./bash.nix
     ./ghostty.nix
-    ./waybar/waybar.nix
     ./wofi.nix
     ./hyprpaper.nix # TODO replace with wpaperd
     ./starship.nix
