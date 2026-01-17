@@ -4,12 +4,24 @@ with lib;
 
 {
   config = mkIf (config.windowManager.name == "hyprland") {
+
+    # ============================================
+    # GREETD LOGIN MANAGER
+    # ============================================
+    services.greetd = {
+      enable = true;
+      settings = rec {
+        initial_session = {
+          command = "${pkgs.hyprland}/bin/hyprland";
+          user = "mrjshzk";
+        };
+        default_session = initial_session;
+      };
+    };
     # ============================================
     # WAYLAND/HYPRLAND ESSENTIALS
     # ============================================
-    programs.hyprland = {
-      enable = true;
-    };
+    programs.hyprland = { enable = true; };
 
     # ============================================
     # XDG PORTAL (for screen sharing, file pickers)
@@ -41,18 +53,5 @@ with lib;
     hardware.graphics.enable32Bit = true;
     hardware.graphics.enable = true;
 
-    # ============================================
-    # GREETD LOGIN MANAGER
-    # ============================================
-    services.greetd = {
-      enable = true;
-      settings = rec {
-        initial_session = {
-          command = "${pkgs.hyprland}/bin/hyprland";
-          user = "mrjshzk";
-        };
-        default_session = initial_session;
-      };
-    };
   };
 }

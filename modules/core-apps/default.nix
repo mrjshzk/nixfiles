@@ -12,6 +12,10 @@ let
       type = types.str;
       default = cmdName;
     };
+    enable = mkOption {
+      type = types.bool;
+      default = true;
+    };
   };
 in {
 

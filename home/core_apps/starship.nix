@@ -1,6 +1,6 @@
-{ pkgs, config, ... }: {
+{ osConfig, ... }: {
   programs.starship = {
-    enable = true;
+    enable = osConfig.core.prompt.enable;
     settings = {
       add_newline = true;
       command_timeout = 1300;

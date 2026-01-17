@@ -3,9 +3,7 @@
 with lib;
 
 {
-  imports = [
-    ./hyprland.nix
-  ];
+  imports = [ ./hyprland.nix ];
 
   options.windowManager = {
     name = mkOption {
@@ -45,37 +43,11 @@ with lib;
       description = "Corner rounding for windows";
     };
 
-    bar = {
-      enable = mkOption {
-        type = types.bool;
-        default = true;
-        description = "Whether to enable a status bar";
-      };
-
-      package = mkOption {
-        type = types.package;
-        default = pkgs.waybar;
-        description = "The status bar package to use";
-      };
-    };
-
-    wallpaper = {
-      enable = mkOption {
-        type = types.bool;
-        default = true;
-        description = "Whether to enable wallpaper";
-      };
-
-      path = mkOption {
-        type = types.nullOr types.str;
-        default = null;
-        description = "Path to the wallpaper image";
-      };
-    };
   };
 
   config = {
     # Set isWayland based on the window manager name
-    windowManager.isWayland = mkDefault (builtins.elem config.windowManager.name [ "hyprland" "sway" ]);
+    windowManager.isWayland =
+      mkDefault (builtins.elem config.windowManager.name [ "hyprland" "sway" ]);
   };
 }

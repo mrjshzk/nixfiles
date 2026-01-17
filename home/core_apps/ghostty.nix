@@ -1,14 +1,13 @@
-{ pkgs, ... }: {
+{ ... }: {
   programs.ghostty = {
-    # Enable for whichever shell you plan to use!
     enableBashIntegration = true;
 
     settings = {
       window-inherit-font-size = false;
-      font-size = 16;
+      font-size = 20;
       window-padding-x = 20;
-      theme = "Gruvbox Dark";
-      background-opacity = "0.8";
+      theme = "TokyoNight";
+      background-opacity = "0.75";
       shell-integration-features = "ssh-terminfo";
     };
   };

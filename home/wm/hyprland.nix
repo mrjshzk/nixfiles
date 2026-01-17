@@ -1,16 +1,14 @@
-{ config, lib, osConfig, ... }:
+{ lib, osConfig, ... }:
 
 with lib;
 
 {
+
   config = mkIf (osConfig.windowManager.name == "hyprland") {
     wayland.windowManager.hyprland = {
       enable = true;
 
       settings = with osConfig.core; {
-        ####################
-        ### VARIABLES ######
-        ####################
         "$terminal" = "${terminal.command}";
         "$fileManager" = "${fileManager.command}";
         "$browser" = "${browser.command}";
@@ -210,10 +208,10 @@ with lib;
           sensitivity = -0.5;
         };
 
-        windowrule = [
-          "suppressevent maximize, class:.*"
-          "nofocus,class:^$,title:^$,xwayland:1,floating:1,fullscreen:0,pinned:0"
-        ];
+        # windowrule = [
+        #   "suppressevent maximize, class:.*"
+        #   "nofocus,class:^$,title:^$,xwayland:1,floating:1,fullscreen:0,pinned:0"
+        # ];
       };
     };
   };
