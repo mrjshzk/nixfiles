@@ -1,4 +1,4 @@
-{ pkgs, spicetify-nix, ... }: {
+{ pkgs, spicetify-nix, osConfig, ... }: {
 
   home = {
     file = {
@@ -24,11 +24,9 @@
       stow
       tldr
 
-      # Hyprland essentials
+      # Hyprland essentials (will be conditional in the future)
       waybar # Status bar
-      wofi # App launcher
       hyprpaper # Wallpaper daemon
-      ghostty # Terminal
       starship # custom prompt
 
       # Screenshot tools
@@ -36,14 +34,10 @@
       slurp # Select screen region
       wl-clipboard # Clipboard utilities
 
-      # File manager
-      yazi
-
       bluetui
       impala
 
       # Browsers
-      librewolf
       discord
       vscodium
 
@@ -110,7 +104,7 @@
       mermaid-cli
       nodejs_24
 
-    ];
+    ] ++ osConfig.core.packages; # Add core application packages
   };
 
   imports = [
@@ -120,7 +114,7 @@
     ./wofi.nix
     ./hyprpaper.nix # TODO replace with wpaperd
     ./starship.nix
-    ./hm_hyprland.nix # HACK
+    ./wm/hyprland.nix
   ];
 
   programs = {
