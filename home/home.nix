@@ -15,104 +15,98 @@
         recursive = true;
       };
     };
-    packages = with pkgs; [
-      # common utils
-      ripgrep
-      killall
-      fd
-      fzf
-      stow
-      tldr
+    packages = with pkgs;
+      [
+        # common utils
+        ripgrep
+        killall
+        fd
+        fzf
+        stow
+        tldr
 
-      # Hyprland essentials (will be conditional in the future)
-      waybar # Status bar
-      hyprpaper # Wallpaper daemon
-      starship # custom prompt
+        # Screenshot tools
+        grim # Screenshot utility
+        slurp # Select screen region
+        wl-clipboard # Clipboard utilities
 
-      # Screenshot tools
-      grim # Screenshot utility
-      slurp # Select screen region
-      wl-clipboard # Clipboard utilities
+        bluetui
+        impala
 
-      bluetui
-      impala
+        # Browsers
+        discord
+        vscodium
 
-      # Browsers
-      discord
-      vscodium
+        # Other useful tools
+        wiremix # tui for audio
+        brightnessctl # Screen brightness
+        playerctl # Media control
+        font-awesome
+        roboto
+        fastfetch
+        mpd
+        mpc
 
-      # Other useful tools
-      wiremix # tui for audio
-      brightnessctl # Screen brightness
-      playerctl # Media control
-      font-awesome
-      roboto
-      fastfetch
-      mpd
-      mpc
+        # langs
+        python313
+        python313Packages.pip
+        python313Packages.black
+        python313Packages.pyflakes
+        python313Packages.isort
+        pipenv
+        python313Packages.pytest
 
-      # langs
-      python313
-      python313Packages.pip
-      python313Packages.black
-      python313Packages.pyflakes
-      python313Packages.isort
-      pipenv
-      python313Packages.pytest
+        go
+        gopls
+        gomodifytags
+        gotests
+        gore
+        air
 
-      go
-      gopls
-      gomodifytags
-      gotests
-      gore
-      air
+        cmake
+        gnumake
+        arduino-cli
+        platformio
 
-      cmake
-      gnumake
-      arduino-cli
-      platformio
+        (pkgs.clang-tools.overrideAttrs (oldAttrs: { meta.priority = 9; }))
+        (pkgs.clang.overrideAttrs (oldAttrs: { meta.priority = 10; }))
+        (pkgs.gcc.overrideAttrs (oldAttrs: { meta.priority = 20; }))
 
-      (pkgs.clang-tools.overrideAttrs (oldAttrs: { meta.priority = 9; }))
-      (pkgs.clang.overrideAttrs (oldAttrs: { meta.priority = 10; }))
-      (pkgs.gcc.overrideAttrs (oldAttrs: { meta.priority = 20; }))
+        glslang
 
-      glslang
+        gdtoolkit_4
 
-      gdtoolkit_4
+        tree-sitter
+        pandoc
 
-      tree-sitter
-      pandoc
+        shfmt
+        shellcheck
 
-      shfmt
-      shellcheck
+        luajit
+        luajitPackages.luarocks-nix
 
-      luajit
-      luajitPackages.luarocks-nix
+        kdePackages.qtdeclarative
+        kdePackages.qtwayland
+        quickshell
+        lazygit
+        brotli
+        blender
+        libxxf86vm
 
-      kdePackages.qtdeclarative
-      kdePackages.qtwayland
-      quickshell
-      lazygit
-      brotli
-      blender
-      libxxf86vm
+        # neovim snacks tools
+        imagemagick
+        git-spice
+        tectonic
+        mermaid-cli
+        nodejs_24
 
-      # neovim snacks tools
-      imagemagick
-      git-spice
-      tectonic
-      mermaid-cli
-      nodejs_24
-
-    ] ++ osConfig.core.packages; # Add core application packages
+      ] ++ osConfig.core.packages; # Add core application packages
   };
 
   imports = [
     spicetify-nix.homeManagerModules.spicetify
     ./bash.nix
     ./ghostty.nix
-    ./wofi.nix
-    ./hyprpaper.nix # TODO replace with wpaperd
     ./starship.nix
     ./wm/hyprland.nix
   ];
@@ -135,12 +129,6 @@
       };
       init.defaultBranch = "main";
     };
-  };
-
-  programs.neovim = {
-    enable = true;
-    viAlias = true;
-    vimAlias = true;
   };
 
   # System version (don't change this)

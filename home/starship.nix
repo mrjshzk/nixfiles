@@ -1,11 +1,5 @@
-{
-  pkgs,
-  config,
-  ...
-}:
-{
+{ pkgs, config, ... }: {
   programs.starship = {
-    enable = true;
     settings = {
       add_newline = true;
       command_timeout = 1300;
@@ -30,7 +24,8 @@
         home_symbol = "~";
         read_only = " ";
         read_only_style = "red";
-        repo_root_format = "[$before_root_path]($style)[$repo_root]($repo_root_style)[$path]($style)[$read_only]($read_only_style) ";
+        repo_root_format =
+          "[$before_root_path]($style)[$repo_root]($repo_root_style)[$path]($style)[$read_only]($read_only_style) ";
         truncate_to_repo = true;
         truncation_length = 3;
         truncation_symbol = "…/";

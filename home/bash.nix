@@ -1,4 +1,5 @@
-{hostname, ...}: let
+{ hostname, ... }:
+let
   rebuild = ''
     wdr="$(pwd)"
     cd ~/.config/nixos || exit 1
@@ -15,13 +16,6 @@ in {
 
       nrs = rebuild;
 
-      ".." = "cd ..";
-      cfgnix = ''
-        nvim ~/.config/nixos
-      '';
-
-      server-shh = "ssh mrjshzk@38.19.200.156";
-      server = "38.19.200.156";
     };
   };
 }

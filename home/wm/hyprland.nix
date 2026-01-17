@@ -7,14 +7,14 @@ with lib;
     wayland.windowManager.hyprland = {
       enable = true;
 
-      settings = {
+      settings = with osConfig.core; {
         ####################
         ### VARIABLES ######
         ####################
-        "$terminal" = osConfig.core.terminal.command;
-        "$fileManager" = osConfig.core.fileManager.command;
-        "$browser" = osConfig.core.browser.command;
-        "$menu" = osConfig.core.launcher.command;
+        "$terminal" = "${terminal.command}";
+        "$fileManager" = "${fileManager.command}";
+        "$browser" = "${browser.command}";
+        "$menu" = "${launcher.command}";
         "$wifi" = "impala";
         "$bluetooth" = "bluetui";
 
@@ -96,9 +96,9 @@ with lib;
         ### AUTOSTART ######
         ####################
         exec-once = [
-          "quickshell &"
+          "${widgets.command} &"
           "systemctl --user start hyprpolkitagent &"
-          "hyprpaper &"
+          "${wallpaper.command} &"
         ];
 
         ####################
@@ -198,9 +198,7 @@ with lib;
 
         master = { new_status = "master"; };
 
-        misc = {
-          force_default_wallpaper = -1;
-        };
+        misc = { force_default_wallpaper = -1; };
 
         gestures = {
           workspace_swipe_invert = false;

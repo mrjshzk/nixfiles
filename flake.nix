@@ -33,9 +33,7 @@
   outputs = inputs@{ nix-ld, nixpkgs, ... }:
     let
       # Shared configuration that can be overridden per-host
-      sharedConfig = {
-        windowManager.name = "hyprland";
-      };
+      sharedConfig = { windowManager.name = "hyprland"; };
 
       mkSystem = hostname: extraModules:
         nixpkgs.lib.nixosSystem {
@@ -45,11 +43,10 @@
 
             nix-ld.nixosModules.nix-ld
             ./hosts/${hostname}/hardware-configuration.nix
-            ./langs/langs.nix
+            ./modules/langs
             ./modules/user_services/user_services.nix
             ./modules/core-apps
             ./modules/window-manager
-            ./wm/window_manager.nix
             ./main/main.nix
             {
               keyboard.layout = "${hostname}";
@@ -65,15 +62,9 @@
         };
     in {
       nixosConfigurations = {
-        desktop = mkSystem "desktop" [ 
-          ./hosts/desktop/nvidia.nix
-          ./hosts/desktop
-        ];
+        desktop = mkSystem "desktop" [ ./hosts/desktop/nvidia.nix ];
 
-        laptop = mkSystem "laptop" [ 
-          ./hosts/laptop/intel-gpu.nix
-          ./hosts/laptop
-        ];
+        laptop = mkSystem "laptop" [ ./hosts/laptop/intel-gpu.nix ];
       };
     };
 }
