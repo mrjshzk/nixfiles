@@ -1,6 +1,6 @@
-{ osConfig, ... }: {
-  programs.starship = {
-    enable = osConfig.core.prompt.enable;
+{ lib, osConfig, ... }: {
+  programs.starship = lib.mkIf (osConfig.core.prompt.command == "starship") {
+    enable = true;
     settings = {
       add_newline = true;
       command_timeout = 1300;

@@ -1,4 +1,4 @@
 { ... }: {
-  imports = [ ./ghostty.nix ./starship.nix ./wpaperd.nix ];
+  imports = [ ./terminal ./hyprpaper.nix ];
 
 }

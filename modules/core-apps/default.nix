@@ -12,10 +12,6 @@ let
       type = types.str;
       default = cmdName;
     };
-    enable = mkOption {
-      type = types.bool;
-      default = true;
-    };
   };
 in {
 
@@ -23,9 +19,9 @@ in {
     terminal = mkApp ghostty "ghostty";
     browser = mkApp librewolf "librewolf";
     fileManager = mkApp yazi "yazi";
-    launcher = mkApp wofi "wofi --show drun";
+    launcher = mkApp rofi "rofi";
     editor = mkApp neovim "nvim";
-    wallpaper = mkApp wpaperd "wpaperd";
+    wallpaper = mkApp swaybg "swaybg";
     widgets = mkApp quickshell "quickshell";
     prompt = mkApp starship "starship";
 

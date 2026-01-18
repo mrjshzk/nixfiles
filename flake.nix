@@ -10,30 +10,26 @@
     };
 
     hyprland.url = "github:hyprwm/Hyprland";
+
     fenix = {
       url = "github:nix-community/fenix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    spicetify-nix.url = "github:Gerg-L/spicetify-nix";
-    quickshell = {
-      # add ?ref=<tag> to track a tag
-      url = "git+https://git.outfoxxed.me/outfoxxed/quickshell";
 
-      # THIS IS IMPORTANT
-      # Mismatched system dependencies will lead to crashes and other issues.
+    spicetify-nix.url = "github:Gerg-L/spicetify-nix";
+
+    quickshell = {
+      url = "git+https://git.outfoxxed.me/outfoxxed/quickshell";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
     nix-ld.url = "github:Mic92/nix-ld";
-    # this line assume that you also have nixpkgs as an input
     nix-ld.inputs.nixpkgs.follows = "nixpkgs";
 
   };
 
   outputs = inputs@{ nix-ld, nixpkgs, ... }:
     let
-      # Shared configuration that can be overridden per-host
-      sharedConfig = { windowManager.name = "hyprland"; };
 
       mkSystem = hostname: extraModules:
         nixpkgs.lib.nixosSystem {
@@ -43,19 +39,18 @@
 
             nix-ld.nixosModules.nix-ld
             ./hosts/${hostname}/hardware-configuration.nix
-            ./modules/langs
-            ./modules/user_services/user_services.nix
-            ./modules/core-apps
-            ./modules/window-manager
-            ./main/main.nix
+            ./modules/langs # programming languages and of sort
+            ./modules/user_services # custom systemd services
+            ./modules/core-apps # core apps definitions
+            ./modules/window-manager # sets up nixos modules for wms
+            ./main/main.nix # main entry, bootstrapper for home manager
             {
               keyboard.layout = "${hostname}";
               host.hostname = "${hostname}";
 
               programs.nix-ld.dev.enable = true;
 
-              # Apply shared configuration
-              windowManager.name = sharedConfig.windowManager.name;
+              windowManager.name = "hyprland";
             }
           ];
 

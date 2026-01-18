@@ -12,7 +12,7 @@ with lib;
         "$terminal" = "${terminal.command}";
         "$fileManager" = "${fileManager.command}";
         "$browser" = "${browser.command}";
-        "$menu" = "${launcher.command}";
+        "$menu" = "${launcher.command} -show drun";
         "$wifi" = "impala";
         "$bluetooth" = "bluetui";
 
@@ -25,21 +25,23 @@ with lib;
         bind = [
           "$mainMod, RETURN, exec, $terminal"
           "$mainMod, Q, killactive"
-          "$mainMod, F, exec, ~/scripts/launch_tui.sh $fileManager"
-          "$mainMod, I, exec, ~/scripts/launch_tui.sh $wifi"
-          "$mainMod, O, exec, ~/scripts/launch_tui.sh $bluetooth"
+          "$mainMod, F, exec, [float;center;size 1200 800]~/scripts/launch_tui.sh $fileManager"
+          "$mainMod, I, exec, [float;center;size 1200 800]~/scripts/launch_tui.sh $wifi"
+          "$mainMod, O, exec, [float;center;size 1200 800]~/scripts/launch_tui.sh $bluetooth"
           "$mainMod, B, exec, $browser"
-          "$mainMod, D, exec, emacsclient -c"
           "$mainMod, R, exec, $menu"
           "$mainMod, M, exec, spotify"
           "$mainShiftMod, F, fullscreen"
-          "$mainShiftMod, R, exec, ~/scripts/reload_everything.sh"
 
           # Focus movement
           "$mainMod, left, movefocus, l"
+          "$mainMod, h, movefocus, l"
           "$mainMod, right, movefocus, r"
+          "$mainMod, l, movefocus, r"
           "$mainMod, up, movefocus, u"
+          "$mainMod, k, movefocus, u"
           "$mainMod, down, movefocus, d"
+          "$mainMod, j, movefocus, d"
 
           # Workspaces
           "$mainMod, 1, workspace, 1"
@@ -68,10 +70,6 @@ with lib;
           "$mainMod, S, togglespecialworkspace, magic"
           "$mainMod SHIFT, S, movetoworkspace, special:magic"
 
-          # Scroll workspaces
-          "$mainMod, mouse_down, workspace, e+1"
-          "$mainMod, mouse_up, workspace, e-1"
-
           # Media keys
           ",XF86AudioRaiseVolume, exec, ~/scripts/change_vol.sh +"
           ",XF86AudioLowerVolume, exec, ~/scripts/change_vol.sh -"
@@ -85,44 +83,28 @@ with lib;
           ",XF86AudioPrev, exec, playerctl previous"
         ];
 
-        bindm = [
-          "$mainMod, mouse:272, movewindow"
-          "$mainMod, mouse:273, resizewindow"
-        ];
-
-        ####################
-        ### AUTOSTART ######
-        ####################
         exec-once = [
           "${widgets.command} &"
           "systemctl --user start hyprpolkitagent &"
-          "${wallpaper.command} &"
+          "${wallpaper.command} -o '*' -i ~/backgrounds/nixos.png &"
         ];
 
-        ####################
-        ### MONITORS #######
-        ####################
         monitor = [
           "HDMI-A-1,2560x1440@144,0x0,1"
           "DP-3,1920x1080@75,2560x0,1"
           "eDP-1,1920x1200@60,0x0,1"
         ];
 
-        ####################
-        ### INPUT ##########
-        ####################
         input = {
           kb_layout = "us,pt";
           kb_options = "grp:win_space_toggle";
           follow_mouse = 1;
           sensitivity = 0;
-
+          repeat_rate = 35;
+          repeat_delay = 200;
           touchpad = { natural_scroll = false; };
         };
 
-        ####################
-        ### ENV VARS #######
-        ####################
         env = [ "XCURSOR_SIZE,24" "HYPRCURSOR_SIZE,24" ];
 
         ####################
@@ -207,11 +189,6 @@ with lib;
           name = "epic-mouse-v1";
           sensitivity = -0.5;
         };
-
-        # windowrule = [
-        #   "suppressevent maximize, class:.*"
-        #   "nofocus,class:^$,title:^$,xwayland:1,floating:1,fullscreen:0,pinned:0"
-        # ];
       };
     };
   };

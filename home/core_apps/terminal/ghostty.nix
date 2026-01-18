@@ -1,10 +1,11 @@
-{ ... }: {
-  programs.ghostty = {
+{ lib, osConfig, ... }: {
+  programs.ghostty = lib.mkIf (osConfig.core.terminal.command == "ghostty") {
+    enable = true;
     enableBashIntegration = true;
 
     settings = {
       window-inherit-font-size = false;
-      font-size = 20;
+      font-size = 16;
       window-padding-x = 20;
       theme = "TokyoNight";
       background-opacity = "0.75";
