@@ -6,7 +6,7 @@
       command_timeout = 1300;
       scan_timeout = 50;
       format = ''
-        $username$directory$git_branch$git_status$git_commit$git_metrics
+        $username$directory$git_branch$git_status$git_commit
       '';
       character = {
         success_symbol = "[](bold green) ";
@@ -39,7 +39,6 @@
       git_branch = { style = "#f4f4f4"; };
       git_status = { style = "#f4f4f4"; };
       git_commit = { style = "#f4f4f4"; };
-      git_metrics = { style = "#f4f4f4"; };
 
     };
   };

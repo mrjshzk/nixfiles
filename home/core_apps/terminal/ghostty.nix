@@ -5,10 +5,10 @@
 
     settings = {
       window-inherit-font-size = false;
-      font-size = 16;
+      font-size = 18;
       window-padding-x = 20;
       theme = "Dark+";
-      background-opacity = "0.75";
+      background-opacity = "0.9";
       shell-integration-features = "ssh-terminfo";
     };
   };
