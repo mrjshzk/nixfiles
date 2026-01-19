@@ -86,7 +86,7 @@ with lib;
         exec-once = [
           "${widgets.command} &"
           "systemctl --user start hyprpolkitagent &"
-          "${wallpaper.command} -o '*' -i ~/backgrounds/nixos.png &"
+          "${wallpaper.command} -o '*' -i ~/backgrounds/pixel.png &"
         ];
 
         monitor = [
@@ -97,7 +97,7 @@ with lib;
 
         input = {
           kb_layout = "us,pt";
-          kb_options = "grp:win_space_toggle";
+          kb_options = "grp:win_space_toggle,caps:super";
           follow_mouse = 1;
           sensitivity = 0;
           repeat_rate = 35;

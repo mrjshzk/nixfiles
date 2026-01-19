@@ -14,6 +14,8 @@
       };
       username = {
         format = "[$user]($style) ";
+        style_user = "#f4f4f4";
+        style_root = "#f4f4f4";
         show_always = true;
         disabled = false;
       };
@@ -22,6 +24,7 @@
         disabled = false;
         fish_style_pwd_dir_length = 0;
         format = "[$path]($style)[$read_only]($read_only_style) ";
+        style = "#f4f4f4";
         home_symbol = "~";
         read_only = " ";
         read_only_style = "red";
@@ -33,6 +36,10 @@
         use_logical_path = true;
         use_os_path_sep = true;
       };
+      git_branch = { style = "#f4f4f4"; };
+      git_status = { style = "#f4f4f4"; };
+      git_commit = { style = "#f4f4f4"; };
+      git_metrics = { style = "#f4f4f4"; };
 
     };
   };

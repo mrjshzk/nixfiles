@@ -7,7 +7,7 @@
       window-inherit-font-size = false;
       font-size = 16;
       window-padding-x = 20;
-      theme = "TokyoNight";
+      theme = "Dark+";
       background-opacity = "0.75";
       shell-integration-features = "ssh-terminfo";
     };

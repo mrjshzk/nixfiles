@@ -17,7 +17,7 @@ in {
 
   options.core = with pkgs; {
     terminal = mkApp ghostty "ghostty";
-    browser = mkApp librewolf "librewolf";
+    browser = mkApp qutebrowser "qutebrowser";
     fileManager = mkApp yazi "yazi";
     launcher = mkApp rofi "rofi";
     editor = mkApp neovim "nvim";
