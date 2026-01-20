@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ inputs, config, lib, pkgs, ... }:
 
 with lib;
 
@@ -17,10 +17,11 @@ in {
 
   options.core = with pkgs; {
     terminal = mkApp ghostty "ghostty";
-    browser = mkApp qutebrowser "qutebrowser";
+    browser = mkApp librewolf "librewolf";
     fileManager = mkApp yazi "yazi";
     launcher = mkApp rofi "rofi";
-    editor = mkApp neovim "nvim";
+    editor = mkApp inputs.neovim-nightly-overlay.packages.${pkgs.system}.default
+      "nvim";
     wallpaper = mkApp swaybg "swaybg";
     widgets = mkApp quickshell "quickshell";
     prompt = mkApp starship "starship";

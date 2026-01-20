@@ -10,7 +10,12 @@
 
     luajit
     luajitPackages.luarocks-nix
+    lua-language-server
+    stylua
 
     nodejs_24
+
+    nil
+    alejandra
   ];
 }

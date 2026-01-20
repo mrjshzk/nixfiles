@@ -9,7 +9,7 @@
     users.mrjshzk = import ../home/home.nix;
     extraSpecialArgs = {
       inherit inputs;
-      inherit (inputs) spicetify-nix;
+      inherit (inputs) spicetify-nix neovim-nightly-overlay;
 
       hostname = config.host.hostname;
     };

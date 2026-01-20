@@ -49,6 +49,9 @@
         tectonic
         mermaid-cli
 
+        tmux
+        zoxide
+
       ] ++ osConfig.core.packages; # Add core application packages
   };
 
