@@ -2,8 +2,8 @@
   environment.systemPackages = with pkgs; [
 
     glslang
-
     gdtoolkit_4
+    godot
 
     tree-sitter
     pandoc

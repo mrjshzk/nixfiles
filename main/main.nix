@@ -1,8 +1,13 @@
-{ config, pkgs, spicetify-nix, ... }: {
+{
+  config,
+  pkgs,
+  spicetify-nix,
+  ...
+}: {
   # ============================================
   # SYSTEM BASICS
   # ============================================
-  imports = [ ./hm_bootstrapper.nix ];
+  imports = [./hm_bootstrapper.nix];
 
   # Boot loader
   boot.loader.systemd-boot.enable = true;
@@ -16,7 +21,7 @@
         EnableIPv6 = true;
         RoutePriorityOffset = 300;
       };
-      Settings = { AutoConnect = true; };
+      Settings = {AutoConnect = true;};
     };
   };
 
@@ -67,7 +72,7 @@
     # Your username
     isNormalUser = true;
     description = "Miguel Silva";
-    extraGroups = [ "networkmanager" "wheel" "video" "audio" ];
+    extraGroups = ["networkmanager" "wheel" "video" "audio"];
     shell = pkgs.bash;
   };
 
@@ -100,7 +105,7 @@
   # ============================================
 
   nix.settings = {
-    experimental-features = [ "nix-command" "flakes" ];
+    experimental-features = ["nix-command" "flakes"];
     auto-optimise-store = true;
   };
 
@@ -188,18 +193,18 @@
     libGL
 
     # Many apps still pull X11 libs even on Wayland (via XWayland)
-    xorg.libX11
-    xorg.libXcursor
-    xorg.libXext
-    xorg.libXi
-    xorg.libXrandr
-    xorg.libXrender
-    xorg.libXinerama
-    xorg.libXfixes
-    xorg.libXxf86vm
+    libx11
+    libxcursor
+    libxext
+    libxi
+    libxrandr
+    libxrender
+    libxinerama
+    libxfixes
+    libxxf86vm
     pulseaudio
-    xorg.libSM
-    xorg.libICE
+    libsm
+    libice
     fontconfig
     dbus
     glib
@@ -214,6 +219,7 @@
     libdrm
     mesa
     udev
+    zstd
   ];
 
   system.stateVersion = "25.11";

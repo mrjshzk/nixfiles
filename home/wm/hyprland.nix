@@ -25,13 +25,15 @@ with lib;
         bind = [
           "$mainMod, RETURN, exec, $terminal"
           "$mainMod, Q, killactive"
-          "$mainMod, F, exec, [float;center;size 1200 800]~/scripts/launch_tui.sh $fileManager"
+          "$mainMod, R, exec, [float;center;size 1200 800]~/scripts/launch_tui.sh $fileManager"
           "$mainMod, I, exec, [float;center;size 1200 800]~/scripts/launch_tui.sh $wifi"
           "$mainMod, O, exec, [float;center;size 1200 800]~/scripts/launch_tui.sh $bluetooth"
           "$mainMod, B, exec, $browser"
-          "$mainMod, R, exec, $menu"
+          "$mainMod, D, exec, $menu"
           "$mainMod, M, exec, spotify"
-          "$mainShiftMod, F, fullscreen"
+          "$mainMod, F, fullscreen"
+          "$mainMod, P, exec, ~/scripts/open_configs.sh"
+          "$mainShiftMod, P, exec, ~/scripts/open_godot_projects.sh"
 
           # Focus movement
           "$mainMod, left, movefocus, l"
@@ -189,6 +191,8 @@ with lib;
           name = "epic-mouse-v1";
           sensitivity = -0.5;
         };
+
+
       };
     };
   };
