@@ -9,7 +9,7 @@ with lib;
       enable = true;
 
       settings = with osConfig.core; {
-        "$terminal" = "${terminal.command}";
+        "$terminal" = "GTK_IM_MODULE=simple ${terminal.command}";
         "$fileManager" = "${fileManager.command}";
         "$browser" = "${browser.command}";
         "$menu" = "${launcher.command} -show drun";
@@ -34,6 +34,7 @@ with lib;
           "$mainMod, F, fullscreen"
           "$mainMod, P, exec, ~/scripts/open_configs.sh"
           "$mainShiftMod, P, exec, ~/scripts/open_godot_projects.sh"
+          "$mainShiftMod, l, exec, ~/scripts/screenshot.sh"
 
           # Focus movement
           "$mainMod, left, movefocus, l"

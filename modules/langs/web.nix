@@ -1,8 +1,9 @@
-{pkgs, ...} : {
-environment.systemPackages = with pkgs; [
-
+{pkgs, ...}: {
+  environment.systemPackages = with pkgs; [
     vscode-langservers-extracted
-        typescript-language-server
-        prettierd
-        ];
-              }
+    typescript-language-server
+    prettierd
+    prettier
+    live-server
+  ];
+}

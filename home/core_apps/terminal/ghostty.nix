@@ -1,4 +1,8 @@
-{ lib, osConfig, ... }: {
+{
+  lib,
+  osConfig,
+  ...
+}: {
   programs.ghostty = lib.mkIf (osConfig.core.terminal.command == "ghostty") {
     enable = true;
     enableBashIntegration = true;

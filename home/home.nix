@@ -23,6 +23,7 @@
         grim # Screenshot utility
         slurp # Select screen region
         wl-clipboard # Clipboard utilities
+        hyprshot 
 
         bluetui
         impala
@@ -37,6 +38,7 @@
         roboto
         fastfetch
         mpd
+        mpv
         mpc
 
         lazygit
@@ -52,6 +54,10 @@
         tmux
         zoxide
 
+        typst
+        typstyle
+        typst-live
+        tinymist
       ] ++ osConfig.core.packages; # Add core application packages
   };
 

@@ -12,6 +12,7 @@
   # Boot loader
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
+    
 
   # Networking
   networking.wireless.iwd = {
@@ -72,7 +73,7 @@
     # Your username
     isNormalUser = true;
     description = "Miguel Silva";
-    extraGroups = ["networkmanager" "wheel" "video" "audio"];
+    extraGroups = ["networkmanager" "wheel" "video" "audio" "dialout"];
     shell = pkgs.bash;
   };
 

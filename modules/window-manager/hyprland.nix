@@ -1,10 +1,11 @@
-{ config, lib, pkgs, ... }:
-
-with lib;
-
 {
+  config,
+  lib,
+  pkgs,
+  ...
+}:
+with lib; {
   config = mkIf (config.windowManager.name == "hyprland") {
-
     # ============================================
     # GREETD LOGIN MANAGER
     # ============================================
@@ -21,7 +22,7 @@ with lib;
     # ============================================
     # WAYLAND/HYPRLAND ESSENTIALS
     # ============================================
-    programs.hyprland = { enable = true; };
+    programs.hyprland = {enable = true;};
 
     # ============================================
     # XDG PORTAL (for screen sharing, file pickers)
@@ -29,7 +30,7 @@ with lib;
 
     xdg.portal = {
       enable = true;
-      extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+      extraPortals = [pkgs.xdg-desktop-portal-gtk];
       config.common.default = "*";
     };
 
@@ -41,6 +42,7 @@ with lib;
       # Wayland
       NIXOS_OZONE_WL = "1"; # For Electron apps
 
+      GTK_IM_MODULE = "simple";
       # XDG
       XDG_CURRENT_DESKTOP = "Hyprland";
       XDG_SESSION_TYPE = "wayland";
@@ -52,6 +54,5 @@ with lib;
     # ============================================
     hardware.graphics.enable32Bit = true;
     hardware.graphics.enable = true;
-
   };
 }
