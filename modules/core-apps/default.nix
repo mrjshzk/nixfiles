@@ -1,8 +1,11 @@
-{ inputs, config, lib, pkgs, ... }:
-
-with lib;
-
-let
+{
+  inputs,
+  config,
+  lib,
+  pkgs,
+  ...
+}:
+with lib; let
   mkApp = pkgName: cmdName: {
     package = mkOption {
       type = types.package;
@@ -14,17 +17,16 @@ let
     };
   };
 in {
-
   options.core = with pkgs; {
     terminal = mkApp ghostty "ghostty";
     browser = mkApp librewolf "librewolf";
     fileManager = mkApp yazi "yazi";
     launcher = mkApp rofi "rofi";
-    editor = mkApp inputs.neovim-nightly-overlay.packages.${pkgs.system}.default
+    editor =
+      mkApp inputs.neovim-nightly-overlay.packages.${pkgs.system}.default
       "nvim";
-    wallpaper = mkApp swaybg "swaybg";
-    widgets = mkApp quickshell "quickshell";
     prompt = mkApp starship "starship";
+    widgets = mkApp inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default "noctalia-shell";
 
     packages = mkOption {
       type = types.listOf types.package;
@@ -34,9 +36,8 @@ in {
         fileManager.package
         launcher.package
         editor.package
-        wallpaper.package
-        widgets.package
         prompt.package
+        widgets.package
       ];
       description = "List of all core application packages";
     };

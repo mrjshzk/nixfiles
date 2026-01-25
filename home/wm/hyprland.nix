@@ -1,9 +1,9 @@
-{ lib, osConfig, ... }:
-
-with lib;
-
 {
-
+  lib,
+  osConfig,
+  ...
+}:
+with lib; {
   config = mkIf (osConfig.windowManager.name == "hyprland") {
     wayland.windowManager.hyprland = {
       enable = true;
@@ -13,8 +13,6 @@ with lib;
         "$fileManager" = "${fileManager.command}";
         "$browser" = "${browser.command}";
         "$menu" = "${launcher.command} -show drun";
-        "$wifi" = "impala";
-        "$bluetooth" = "bluetui";
 
         "$mainMod" = "SUPER";
         "$mainShiftMod" = "SUPER_SHIFT";
@@ -24,10 +22,8 @@ with lib;
         ####################
         bind = [
           "$mainMod, RETURN, exec, $terminal"
-          "$mainMod, Q, killactive"
+          "$mainMod, Q, exec, ~/scripts/smart_close.sh"
           "$mainMod, R, exec, [float;center;size 1200 800]~/scripts/launch_tui.sh $fileManager"
-          "$mainMod, I, exec, [float;center;size 1200 800]~/scripts/launch_tui.sh $wifi"
-          "$mainMod, O, exec, [float;center;size 1200 800]~/scripts/launch_tui.sh $bluetooth"
           "$mainMod, B, exec, $browser"
           "$mainMod, D, exec, $menu"
           "$mainMod, M, exec, spotify"
@@ -89,7 +85,6 @@ with lib;
         exec-once = [
           "${widgets.command} &"
           "systemctl --user start hyprpolkitagent &"
-          "${wallpaper.command} -o '*' -i ~/backgrounds/pixel.png &"
         ];
 
         monitor = [
@@ -105,10 +100,10 @@ with lib;
           sensitivity = 0;
           repeat_rate = 35;
           repeat_delay = 200;
-          touchpad = { natural_scroll = false; };
+          touchpad = {natural_scroll = false;};
         };
 
-        env = [ "XCURSOR_SIZE,24" "HYPRCURSOR_SIZE,24" ];
+        env = ["XCURSOR_SIZE,24" "HYPRCURSOR_SIZE,24"];
 
         ####################
         ### GENERAL ########
@@ -179,9 +174,9 @@ with lib;
           preserve_split = true;
         };
 
-        master = { new_status = "master"; };
+        master = {new_status = "master";};
 
-        misc = { force_default_wallpaper = -1; };
+        misc = {force_default_wallpaper = -1;};
 
         gestures = {
           workspace_swipe_invert = false;
@@ -192,8 +187,6 @@ with lib;
           name = "epic-mouse-v1";
           sensitivity = -0.5;
         };
-
-
       };
     };
   };

@@ -19,14 +19,14 @@
 
     spicetify-nix.url = "github:Gerg-L/spicetify-nix";
 
-    quickshell = {
-      url = "git+https://git.outfoxxed.me/outfoxxed/quickshell";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
 
     nix-ld.url = "github:Mic92/nix-ld";
     nix-ld.inputs.nixpkgs.follows = "nixpkgs";
 
+    noctalia = {
+      url = "github:noctalia-dev/noctalia-shell";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = inputs@{ nix-ld, nixpkgs, ... }:
@@ -50,7 +50,6 @@
               host.hostname = "${hostname}";
 
               programs.nix-ld.dev.enable = true;
-
               windowManager.name = "hyprland";
             }
           ];

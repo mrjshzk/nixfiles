@@ -11,5 +11,3 @@ volume_float=$(wpctl get-volume @DEFAULT_AUDIO_SINK@ | awk '{print $2}')
 # Calculate percentage (round to integer)
 volume_percentage=$(awk -v v="$volume_float" 'BEGIN { printf "%d\n", v*100 }')
 
-# Display notification with mako
-notify-send -a "volume" -h int:value:"${volume_percentage}" "Volume" "${volume_percentage}%"

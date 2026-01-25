@@ -3,7 +3,7 @@
 prefix="$HOME/.config/"
 terminal="ghostty"
 
-chosen="$(printf "nvim\nquickshell\nnixos" | rofi -dmenu -p 'Edit configurations:')"
+chosen="$(printf "nvim\nnixos" | rofi -dmenu -p 'Edit configurations:')"
 echo $chosen
 [ -n "$chosen" ] || exit 0
 

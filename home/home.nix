@@ -40,6 +40,7 @@
         mpd
         mpv
         mpc
+        jq
 
         lazygit
         brotli
@@ -53,11 +54,16 @@
 
         tmux
         zoxide
+        keepassxc
+        xdotool
 
         typst
         typstyle
         typst-live
         tinymist
+
+        steam
+        steamcmd
       ] ++ osConfig.core.packages; # Add core application packages
   };
 
@@ -66,6 +72,7 @@
     ./bash.nix
     ./wm/hyprland.nix
     ./core_apps
+    ./noctalia.nix
   ];
 
   programs = {
