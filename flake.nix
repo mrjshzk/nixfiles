@@ -2,7 +2,6 @@
   description = "mrjshzk nix configuration";
 
   inputs = {
-
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     home-manager = {
@@ -19,7 +18,6 @@
 
     spicetify-nix.url = "github:Gerg-L/spicetify-nix";
 
-
     nix-ld.url = "github:Mic92/nix-ld";
     nix-ld.inputs.nixpkgs.follows = "nixpkgs";
 
@@ -27,17 +25,28 @@
       url = "github:noctalia-dev/noctalia-shell";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    lanzaboote = {
+      url = "github:nix-community/lanzaboote/v1.0.0";
+
+      # Optional but recommended to limit the size of your system closure.
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = inputs@{ nix-ld, nixpkgs, ... }:
-    let
-
-      mkSystem = hostname: extraModules:
-        nixpkgs.lib.nixosSystem {
-          system = "x86_64-linux";
-          specialArgs = { inherit inputs; };
-          modules = extraModules ++ [
-
+  outputs = inputs @ {
+    nix-ld,
+    nixpkgs,
+    lanzaboote,
+    ...
+  }: let
+    mkSystem = hostname: extraModules:
+      nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        specialArgs = {inherit inputs;};
+        modules =
+          extraModules
+          ++ [
+            lanzaboote.nixosModules.lanzaboote
             nix-ld.nixosModules.nix-ld
             ./hosts/${hostname}/hardware-configuration.nix
             ./modules/langs # programming languages and of sort
@@ -53,13 +62,12 @@
               windowManager.name = "hyprland";
             }
           ];
-
-        };
-    in {
-      nixosConfigurations = {
-        desktop = mkSystem "desktop" [ ./hosts/desktop/nvidia.nix ];
-
-        laptop = mkSystem "laptop" [ ./hosts/laptop/intel-gpu.nix ];
       };
+  in {
+    nixosConfigurations = {
+      desktop = mkSystem "desktop" [./hosts/desktop/nvidia.nix];
+
+      laptop = mkSystem "laptop" [./hosts/laptop/intel-gpu.nix];
     };
+  };
 }

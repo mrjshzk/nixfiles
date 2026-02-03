@@ -1,5 +1,10 @@
-{ pkgs, spicetify-nix, osConfig, ... }: {
-
+{
+  pkgs,
+  spicetify-nix,
+  osConfig,
+  lib,
+  ...
+}: {
   home = {
     file = {
       "backgrounds" = {
@@ -23,7 +28,7 @@
         grim # Screenshot utility
         slurp # Select screen region
         wl-clipboard # Clipboard utilities
-        hyprshot 
+        hyprshot
 
         bluetui
         impala
@@ -64,7 +69,11 @@
 
         steam
         steamcmd
-      ] ++ osConfig.core.packages; # Add core application packages
+        steam-run
+        obsidian
+        appimage-run
+      ]
+      ++ osConfig.core.packages; # Add core application packages
   };
 
   imports = [
@@ -93,7 +102,10 @@
       };
     };
   };
-
+  # Lanzaboote currently replaces the systemd-boot module.
+  # This setting is usually set to true in configuration.nix
+  # generated at installation time. So we force it to false
+  # for now.
   # System version (don't change this)
   home.stateVersion = "25.11";
 }

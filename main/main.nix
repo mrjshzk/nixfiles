@@ -1,16 +1,32 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  lib,
+  ...
+}: {
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
   imports = [./hm_bootstrapper.nix];
 
   # Boot loader
-  boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
   networking.networkmanager.enable = true;
   services.power-profiles-daemon.enable = true;
   services.upower.enable = true;
 
+  boot.loader.systemd-boot.enable = lib.mkForce false;
+
+  boot.loader.systemd-boot.edk2-uefi-shell.enable = true;
+  time.hardwareClockInLocalTime = true;
+  boot.loader.systemd-boot.windows = {
+    "Windows" = {
+      efiDeviceHandle = "fs0";
+    };
+  };
+  boot.lanzaboote = {
+    enable = true;
+    pkiBundle = "/var/lib/sbctl";
+  };
   # Bluetooth
   hardware.bluetooth = {
     enable = true;
@@ -76,6 +92,8 @@
     # Login
     wayland
     wayland-protocols
+
+    sbctl
   ];
 
   # ============================================
