@@ -6,6 +6,7 @@
   # Enable NVIDIA drivers
   services.xserver.videoDrivers = [ "nvidia" ];
   
+  services.power-profiles-daemon.enable = true;
   hardware.nvidia = {
     # Use open source or proprietary drivers
     open = false;  # Set to true for open-source drivers

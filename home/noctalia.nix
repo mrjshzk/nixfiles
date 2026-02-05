@@ -7,18 +7,25 @@
   programs.noctalia-shell = {
     enable = true;
     settings = {
-      colorSchemes.predefinedScheme = "Monochrome";
+      colorSchemes.predefinedScheme = "GitHub Dark";
       location = {
         name = "Vila do Conde, Portugal";
+      };
+      bar = {
+        position = "bottom";
+        floating = false;
+        marginVertical = 4;
+        marginHorizontal = 4;
       };
     };
   };
 
   home.file.".cache/noctalia/wallpapers.json" = {
     text = builtins.toJSON {
-      defaultWallpaper = "~/backgrounds/cat_at_play.png";
+      defaultWallpaper = "/home/mrjshzk/backgrounds/pixel.png";
       wallpapers = {
-        "DP-1" = "~/backgrounds/cat_at_play.png";
+        "DP-1" = "/home/mrjshzk/backgrounds/pixel.png";
+        "eDP-1" = "/home/mrjshzk/backgrounds/pixel.png";
       };
     };
   };
