@@ -12,7 +12,7 @@ with lib; {
         "$terminal" = "GTK_IM_MODULE=simple ${terminal.command}";
         "$fileManager" = "${fileManager.command}";
         "$browser" = "${browser.command}";
-        "$menu" = "${launcher.command} -show drun";
+        "$menu" = "${widgets.command} ipc call launcher toggle || ${launcher.command} -show drun";
 
         "$mainMod" = "SUPER";
         "$mainShiftMod" = "SUPER_SHIFT";

@@ -2,6 +2,8 @@
   description = "mrjshzk nix configuration";
 
   inputs = {
+    sops-nix.url = "github:Mic92/sops-nix";
+    sops-nix.inputs.nixpkgs.follows = "nixpkgs";
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     home-manager = {
@@ -37,6 +39,7 @@
     nix-ld,
     nixpkgs,
     lanzaboote,
+    sops-nix,
     ...
   }: let
     mkSystem = hostname: extraModules:
@@ -48,6 +51,8 @@
           ++ [
             lanzaboote.nixosModules.lanzaboote
             nix-ld.nixosModules.nix-ld
+            sops-nix.nixosModules.sops
+
             ./hosts/${hostname}/hardware-configuration.nix
             ./modules/langs # programming languages and of sort
             ./modules/user_services # custom systemd services

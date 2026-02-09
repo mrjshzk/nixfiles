@@ -65,7 +65,7 @@
     # Your username
     isNormalUser = true;
     description = "Miguel Silva";
-    extraGroups = ["networkmanager" "wheel" "video" "audio" "dialout"];
+    extraGroups = ["networkmanager" "wheel" "video" "audio" "dialout" "davfs2"];
     shell = pkgs.bash;
   };
 
@@ -214,6 +214,24 @@
     mesa
     udev
     zstd
+    sops
+  ];
+
+  services.davfs2.enable = true;
+
+  systemd.mounts = [
+    {
+      enable = true;
+      description = "Webdav mount point";
+      after = ["network-online.target"];
+      wants = ["network-online.target"];
+
+      what = "https://cloud.mrjshzk.xyz/remote.php/dav/files/mrjshzk";
+      where = "/mnt/nextcloud";
+      options = "uid=1000,gid=1000,file_mode=0664,dir_mode=2775";
+      type = "davfs";
+      mountConfig.TimeoutSec = 15;
+    }
   ];
 
   system.stateVersion = "25.11";

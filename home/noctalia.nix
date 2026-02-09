@@ -1,4 +1,8 @@
-{inputs, ...}: {
+{
+  inputs,
+  osConfig,
+  ...
+}: {
   imports = [
     inputs.noctalia.homeModules.default
   ];
@@ -7,26 +11,55 @@
   programs.noctalia-shell = {
     enable = true;
     settings = {
-      colorSchemes.predefinedScheme = "GitHub Dark";
-      location = {
-        name = "Vila do Conde, Portugal";
+      dock.enabled = false;
+      general = {
+        animationDisabled = true;
+        radiusRatio = 0; # general radius
+        iRadiusRatio = 0; # radius for input elements
       };
+      colorSchemes = {
+        predefinedScheme = "Vesper";
+      };
+      location.name = "Vila do Conde, Portugal";
       bar = {
-        position = "bottom";
-        floating = false;
-        marginVertical = 4;
-        marginHorizontal = 4;
+        position = "top";
+        barType = "simple";
+        density = "comfortable";
+        useSeparateOpacity = true;
+        backgroundOpacity = 0;
+        widgets = {
+          left = [
+            # {id = "Launcher";}
+            {id = "Workspace";}
+            {id = "Clock";}
+            # {id = "SystemMonitor";}
+            {id = "ActiveWindow";}
+            {id = "MediaMini";}
+          ];
+          center = [];
+          right = [
+            {id = "Tray";}
+            {id = "NotificationHistory";}
+            {id = "Battery";}
+            {id = "Volume";}
+            # {id = "Brightness";}
+            {id = "ControlCenter";}
+          ];
+        };
+      };
+      wallpaper = {
+        directory = "/home/mrjshzk/backgrounds";
+        transitionDuration = 1000;
+      };
+      applauncher = {
+        terminalCommand = "${osConfig.core.terminal.command} -e";
       };
     };
   };
 
   home.file.".cache/noctalia/wallpapers.json" = {
     text = builtins.toJSON {
-      defaultWallpaper = "/home/mrjshzk/backgrounds/pixel.png";
-      wallpapers = {
-        "DP-1" = "/home/mrjshzk/backgrounds/pixel.png";
-        "eDP-1" = "/home/mrjshzk/backgrounds/pixel.png";
-      };
+      defaultWallpaper = "/home/mrjshzk/backgrounds/artorias.png";
     };
   };
 }

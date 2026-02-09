@@ -72,6 +72,9 @@
         steam-run
         obsidian
         appimage-run
+        mangohud
+        teams-for-linux
+        libreoffice
       ]
       ++ osConfig.core.packages; # Add core application packages
   };
