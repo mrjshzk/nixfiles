@@ -1,11 +1,12 @@
 {
   pkgs,
   lib,
+  inputs,
   ...
 }: {
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
-  imports = [./hm_bootstrapper.nix];
+  imports = [./hm_bootstrapper.nix inputs.sops-nix.nixosModules.sops];
 
   # Boot loader
   boot.loader.efi.canTouchEfiVariables = true;
@@ -216,6 +217,15 @@
     zstd
     sops
   ];
+
+  sops = {
+    defaultSopsFile = ./secrets/secrets.yaml;
+    defaultSopsFormat = "yaml";
+    age.keyFile = "/home/mrjshzk/.config/sops/age/keys.txt";
+
+    secrets.example-key = {};
+    secrets."myservice/my_subdir/my_secret" = {};
+  };
 
   services.davfs2.enable = true;
 
