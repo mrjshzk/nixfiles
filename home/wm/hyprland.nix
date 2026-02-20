@@ -187,6 +187,12 @@ with lib; {
           name = "epic-mouse-v1";
           sensitivity = -0.5;
         };
+
+        windowrulev2 = [
+          "unset, class:UnrealEditor$, title:\\w*$"
+          "noinitialfocus, class:UnrealEditor$, title:\\w*$"
+          "suppressevent activate, class:UnrealEditor$, title:\\w*$"
+        ];
       };
     };
   };

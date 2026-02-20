@@ -18,11 +18,6 @@
 
   boot.loader.systemd-boot.edk2-uefi-shell.enable = true;
   time.hardwareClockInLocalTime = true;
-  boot.loader.systemd-boot.windows = {
-    "Windows" = {
-      efiDeviceHandle = "fs0";
-    };
-  };
   boot.lanzaboote = {
     enable = true;
     pkiBundle = "/var/lib/sbctl";
@@ -219,30 +214,58 @@
   ];
 
   sops = {
-    defaultSopsFile = ./secrets/secrets.yaml;
+    defaultSopsFile = ../secrets/secrets.yaml;
     defaultSopsFormat = "yaml";
     age.keyFile = "/home/mrjshzk/.config/sops/age/keys.txt";
 
-    secrets.example-key = {};
-    secrets."myservice/my_subdir/my_secret" = {};
+    secrets.example_key = {};
+    secrets."webdav/nextcloud" = {
+      mode = "0600";
+      path = "/etc/davfs2/secrets";
+    };
   };
 
   services.davfs2.enable = true;
 
   systemd.mounts = [
     {
-      enable = true;
       description = "Webdav mount point";
       after = ["network-online.target"];
       wants = ["network-online.target"];
 
       what = "https://cloud.mrjshzk.xyz/remote.php/dav/files/mrjshzk";
       where = "/mnt/nextcloud";
-      options = "uid=1000,gid=1000,file_mode=0664,dir_mode=2775";
+      options = "x-systemd.automount,uid=1000,gid=100";
       type = "davfs";
-      mountConfig.TimeoutSec = 15;
     }
   ];
+  systemd.automounts = [
+    {
+      description = "Nextcloud webdav automount";
+      where = "/mnt/nextcloud";
+      wantedBy = ["multi-user.target"];
+      automountConfig = {
+        DirectoryMode = "0755";
+      };
+    }
+  ];
+
+  virtualisation.docker = {
+    enable = true;
+    daemon.settings = {
+      experimental = true;
+      default-address-pools = [
+        {
+          base = "172.30.0.0/16";
+          size = 24;
+        }
+      ];
+    };
+  };
+  environment.variables = {
+    EDITOR = "nvim";
+    VISUAL = "nvim";
+  };
 
   system.stateVersion = "25.11";
 }

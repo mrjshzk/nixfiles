@@ -2,7 +2,7 @@
   pkgs,
   spicetify-nix,
   osConfig,
-  lib,
+  inputs,
   ...
 }: {
   home = {
@@ -75,6 +75,9 @@
         mangohud
         teams-for-linux
         libreoffice
+        proton-pass
+        docker
+        filezilla
       ]
       ++ osConfig.core.packages; # Add core application packages
   };
@@ -105,10 +108,14 @@
       };
     };
   };
-  # Lanzaboote currently replaces the systemd-boot module.
-  # This setting is usually set to true in configuration.nix
-  # generated at installation time. So we force it to false
-  # for now.
+
+  programs.neovim = {
+    enable = true;
+    defaultEditor = true;
+    package = inputs.neovim-nightly-overlay.packages.${pkgs.system}.default;
+  };
+
+
   # System version (don't change this)
   home.stateVersion = "25.11";
 }

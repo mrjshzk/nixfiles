@@ -17,4 +17,4 @@ pkill -x $terminal 2>/dev/null || true
 sleep 0.1
 
 cd $dir
-$HOME/godot/godot --display-driver wayland -e
+godot --display-driver wayland -e

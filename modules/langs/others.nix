@@ -3,7 +3,7 @@
 
     glslang
     gdtoolkit_4
-    godot
+    godotPackages_4_6.godot
 
     tree-sitter
     pandoc
