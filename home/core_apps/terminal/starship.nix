@@ -14,8 +14,8 @@
       };
       username = {
         format = "[$user]($style) ";
-        style_user = "#f4f4f4";
-        style_root = "#f4f4f4";
+        style_user = "#BBBBBB";
+        style_root = "#FFCB6B"; # subtle gold for root
         show_always = true;
         disabled = false;
       };
@@ -24,22 +24,22 @@
         disabled = false;
         fish_style_pwd_dir_length = 0;
         format = "[$path]($style)[$read_only]($read_only_style) ";
-        style = "#f4f4f4";
+        style = "#EBD5AB";
         home_symbol = "~";
         read_only = " ";
-        read_only_style = "red";
+        read_only_style = "#628141";
         repo_root_format =
           "[$before_root_path]($style)[$repo_root]($repo_root_style)[$path]($style)[$read_only]($read_only_style) ";
+        repo_root_style = "#8BAE66";
         truncate_to_repo = true;
         truncation_length = 3;
         truncation_symbol = "…/";
         use_logical_path = true;
         use_os_path_sep = true;
       };
-      git_branch = { style = "#f4f4f4"; };
-      git_status = { style = "#f4f4f4"; };
-      git_commit = { style = "#f4f4f4"; };
-
+      git_branch = { style = "#EBD5AB"; };
+      git_status = { style = "#FFCB6B"; };
+      git_commit = { style = "#C792EA"; };
     };
   };
 }
