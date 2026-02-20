@@ -26,21 +26,27 @@ with lib; {
           "$mainMod, R, exec, [float;center;size 1200 800]~/scripts/launch_tui.sh $fileManager"
           "$mainMod, B, exec, $browser"
           "$mainMod, D, exec, $menu"
-          "$mainMod, M, exec, spotify"
           "$mainMod, F, fullscreen"
           "$mainMod, P, exec, ~/scripts/open_configs.sh"
           "$mainShiftMod, P, exec, ~/scripts/open_godot_projects.sh"
-          "$mainShiftMod, l, exec, ~/scripts/screenshot.sh"
+          "$mainShiftMod, o, exec, ~/scripts/screenshot.sh"
 
           # Focus movement
-          "$mainMod, left, movefocus, l"
           "$mainMod, h, movefocus, l"
-          "$mainMod, right, movefocus, r"
           "$mainMod, l, movefocus, r"
-          "$mainMod, up, movefocus, u"
           "$mainMod, k, movefocus, u"
-          "$mainMod, down, movefocus, d"
           "$mainMod, j, movefocus, d"
+
+          # move windows
+          "$mainShiftMod, h, movewindow, l"
+          "$mainShiftMod, l, movewindow, r"
+          "$mainShiftMod, k, movewindow, u"
+          "$mainShiftMod, j, movewindow, d"
+
+          # change layout
+          "$mainShiftMod, M, exec, hyprctl keyword general:layout \"dwindle\""
+          "$mainMod, m, exec, hyprctl keyword general:layout \"master\""
+          "$mainMod, y, exec, hyprctl dispatch togglefloating"
 
           # Workspaces
           "$mainMod, 1, workspace, 1"
@@ -82,6 +88,10 @@ with lib; {
           ",XF86AudioPrev, exec, playerctl previous"
         ];
 
+        bindm = [
+          "$mainMod, mouse:274, movewindow"
+        ];
+
         exec-once = [
           "${widgets.command} &"
           "systemctl --user start hyprpolkitagent &"
@@ -114,7 +124,7 @@ with lib; {
           border_size = osConfig.windowManager.borderSize;
           resize_on_border = false;
           allow_tearing = false;
-          layout = "dwindle";
+          layout = "master";
         };
 
         decoration = {
