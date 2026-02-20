@@ -36,6 +36,7 @@
         vesktop # alternative to discord
         vscodium
         chromium  # sometimes needed unfortunately :(
+        telegram-desktop
         bibata-cursors
 
         wiremix # tui for audio

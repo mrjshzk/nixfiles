@@ -17,5 +17,7 @@
 
     nil
     alejandra
+
+    compose-language-service # docker compose yaml lsp
   ];
 }
