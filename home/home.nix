@@ -36,6 +36,7 @@
         discord
         vscodium
         chromium  # sometimes needed unfortunately :(
+        bibata-cursors
 
         wiremix # tui for audio
         brightnessctl # Screen brightness

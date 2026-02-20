@@ -103,7 +103,7 @@ with lib; {
           touchpad = {natural_scroll = false;};
         };
 
-        env = ["XCURSOR_SIZE,24" "HYPRCURSOR_SIZE,24"];
+        env = ["XCURSOR_SIZE,24" "HYPRCURSOR_SIZE,24" "XCURSOR_THEME,Bibata-Modern-Ice" "HYPRCURSOR_THEME,Bibata-Modern-Ice"];
 
         ####################
         ### GENERAL ########

@@ -33,13 +33,13 @@ with lib;
 
     borderSize = mkOption {
       type = types.int;
-      default = 2;
+      default = 1;
       description = "Border size for windows";
     };
 
     rounding = mkOption {
       type = types.int;
-      default = 10;
+      default = 0;
       description = "Corner rounding for windows";
     };
 
