@@ -35,6 +35,7 @@
 
         discord
         vscodium
+        chromium  # sometimes needed unfortunately :(
 
         wiremix # tui for audio
         brightnessctl # Screen brightness
