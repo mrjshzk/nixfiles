@@ -98,9 +98,9 @@ with lib; {
         ];
 
         monitor = [
-          "HDMI-A-1,2560x1440@144,0x0,1"
-          "DP-3,1920x1080@75,2560x0,1"
-          "eDP-1,1920x1200@60,0x0,1"
+          "HDMI-A-1,2560x1440@144,0x0,1" # main desktop monitor
+          "DP-3,1920x1080@75,2560x0,1" # small desktop monitor
+          "eDP-1,1920x1200@60,0x0,1" # laptop monitor
         ];
 
         input = {
@@ -125,6 +125,7 @@ with lib; {
           resize_on_border = false;
           allow_tearing = false;
           layout = "master";
+          "col.active_border" = "rgba(EBD5ABFF)";
         };
 
         decoration = {
@@ -191,11 +192,6 @@ with lib; {
         gestures = {
           workspace_swipe_invert = false;
           gesture = "3, horizontal, workspace";
-        };
-
-        device = {
-          name = "epic-mouse-v1";
-          sensitivity = -0.5;
         };
 
         windowrulev2 = [
