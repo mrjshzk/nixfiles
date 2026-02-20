@@ -33,7 +33,7 @@
         bluetui
         impala
 
-        discord
+        vesktop # alternative to discord
         vscodium
         chromium  # sometimes needed unfortunately :(
         bibata-cursors
