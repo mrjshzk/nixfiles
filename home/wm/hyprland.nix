@@ -193,12 +193,6 @@ with lib; {
           workspace_swipe_invert = false;
           gesture = "3, horizontal, workspace";
         };
-
-        windowrulev2 = [
-          "unset, class:UnrealEditor$, title:\\w*$"
-          "noinitialfocus, class:UnrealEditor$, title:\\w*$"
-          "suppressevent activate, class:UnrealEditor$, title:\\w*$"
-        ];
       };
     };
   };
