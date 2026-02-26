@@ -5,20 +5,7 @@
   ...
 }:
 with lib; {
-  config = mkIf (config.windowManager.name == "hyprland") {
-    # ============================================
-    # GREETD LOGIN MANAGER
-    # ============================================
-    services.greetd = {
-      enable = true;
-      settings = rec {
-        initial_session = {
-          command = "${pkgs.hyprland}/bin/start-hyprland";
-          user = "mrjshzk";
-        };
-        default_session = initial_session;
-      };
-    };
+  config = mkIf config.desktopEnvironments.hyprland.enable {
     # ============================================
     # WAYLAND/HYPRLAND ESSENTIALS
     # ============================================
@@ -29,7 +16,7 @@ with lib; {
     # ============================================
 
     xdg.portal = {
-      enable = true;
+      enable = mkDefault true;
       extraPortals = [pkgs.xdg-desktop-portal-gtk];
       config.common.default = "*";
     };
@@ -43,16 +30,6 @@ with lib; {
       NIXOS_OZONE_WL = "1"; # For Electron apps
 
       GTK_IM_MODULE = "simple";
-      # XDG
-      XDG_CURRENT_DESKTOP = "Hyprland";
-      XDG_SESSION_TYPE = "wayland";
-      XDG_SESSION_DESKTOP = "Hyprland";
     };
-
-    # ============================================
-    # HARDWARE
-    # ============================================
-    hardware.graphics.enable32Bit = true;
-    hardware.graphics.enable = true;
   };
 }

@@ -4,7 +4,7 @@
   ...
 }:
 with lib; {
-  config = mkIf (osConfig.windowManager.name == "hyprland") {
+  config = mkIf (osConfig.desktopEnvironments.hyprland.enable) {
     wayland.windowManager.hyprland = {
       enable = true;
 

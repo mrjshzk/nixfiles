@@ -64,7 +64,9 @@
               host.hostname = "${hostname}";
 
               programs.nix-ld.dev.enable = true;
-              windowManager.name = "hyprland";
+              desktopEnvironments.hyprland.enable = true;
+              desktopEnvironments.kde.enable = true;
+              desktopEnvironments.gnome.enable = true;
             }
           ];
       };

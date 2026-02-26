@@ -3,51 +3,46 @@
 with lib;
 
 {
-  imports = [ ./hyprland.nix ];
+  imports = [
+    ./hyprland.nix
+    ./kde.nix
+    ./gnome.nix
+    ./display-manager.nix
+  ];
 
-  options.windowManager = {
-    name = mkOption {
-      type = types.enum [ "hyprland" "sway" "i3" "none" ];
-      default = "hyprland";
-      description = "The window manager to use";
+  options = {
+    desktopEnvironments = {
+      hyprland.enable = mkEnableOption "Hyprland window manager";
+      kde.enable = mkEnableOption "KDE Plasma 6 desktop environment";
+      gnome.enable = mkEnableOption "GNOME desktop environment";
     };
 
-    isWayland = mkOption {
-      type = types.bool;
-      description = "Whether the window manager uses Wayland";
-    };
+    windowManager = {
+      gaps = {
+        inner = mkOption {
+          type = types.int;
+          default = 2;
+          description = "Inner gaps between windows";
+        };
 
-    gaps = {
-      inner = mkOption {
-        type = types.int;
-        default = 2;
-        description = "Inner gaps between windows";
+        outer = mkOption {
+          type = types.int;
+          default = 5;
+          description = "Outer gaps around windows";
+        };
       };
 
-      outer = mkOption {
+      borderSize = mkOption {
         type = types.int;
-        default = 5;
-        description = "Outer gaps around windows";
+        default = 1;
+        description = "Border size for windows";
+      };
+
+      rounding = mkOption {
+        type = types.int;
+        default = 0;
+        description = "Corner rounding for windows";
       };
     };
-
-    borderSize = mkOption {
-      type = types.int;
-      default = 1;
-      description = "Border size for windows";
-    };
-
-    rounding = mkOption {
-      type = types.int;
-      default = 0;
-      description = "Corner rounding for windows";
-    };
-
-  };
-
-  config = {
-    # Set isWayland based on the window manager name
-    windowManager.isWayland =
-      mkDefault (builtins.elem config.windowManager.name [ "hyprland" "sway" ]);
   };
 }
