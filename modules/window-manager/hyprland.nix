@@ -29,7 +29,7 @@ with lib; {
       # Wayland
       NIXOS_OZONE_WL = "1"; # For Electron apps
 
-      # GTK_IM_MODULE = "simple";
+      GTK_IM_MODULE = "ibus";
     };
   };
 }
