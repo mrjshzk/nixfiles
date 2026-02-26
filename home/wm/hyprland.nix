@@ -90,6 +90,8 @@ with lib; {
 
         bindm = [
           "$mainMod, mouse:274, movewindow"
+          "$mainMod, mouse:272, resizewindow"
+          "$mainShiftMod, mouse:272, resizewindow 1"
         ];
 
         exec-once = [
