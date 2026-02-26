@@ -61,7 +61,7 @@
     # Your username
     isNormalUser = true;
     description = "Miguel Silva";
-    extraGroups = ["networkmanager" "wheel" "video" "audio" "dialout" "davfs2"];
+    extraGroups = ["networkmanager" "wheel" "video" "audio" "dialout" "davfs2" "docker"];
     shell = pkgs.bash;
   };
 
@@ -89,6 +89,7 @@
     wayland-protocols
 
     sbctl
+    sops
   ];
 
   # ============================================
@@ -210,7 +211,6 @@
     mesa
     udev
     zstd
-    sops
   ];
 
   sops = {
@@ -218,7 +218,6 @@
     defaultSopsFormat = "yaml";
     age.keyFile = "/home/mrjshzk/.config/sops/age/keys.txt";
 
-    secrets.example_key = {};
     secrets."webdav/nextcloud" = {
       mode = "0600";
       path = "/etc/davfs2/secrets";
