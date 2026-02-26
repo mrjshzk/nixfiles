@@ -35,7 +35,7 @@
 
         vesktop # alternative to discord
         vscodium
-        chromium  # sometimes needed unfortunately :(
+        chromium # sometimes needed unfortunately :(
         telegram-desktop
         bibata-cursors
 
@@ -81,6 +81,7 @@
         proton-pass
         docker
         filezilla
+        jetbrains.rider
       ]
       ++ osConfig.core.packages; # Add core application packages
   };
@@ -110,14 +111,12 @@
         init.defaultBranch = "main";
       };
     };
+    neovim = {
+      enable = true;
+      defaultEditor = true;
+      package = inputs.neovim-nightly-overlay.packages.${pkgs.system}.default;
+    };
   };
-
-  programs.neovim = {
-    enable = true;
-    defaultEditor = true;
-    package = inputs.neovim-nightly-overlay.packages.${pkgs.system}.default;
-  };
-
 
   # System version (don't change this)
   home.stateVersion = "25.11";
