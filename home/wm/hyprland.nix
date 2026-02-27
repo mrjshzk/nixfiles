@@ -21,7 +21,7 @@ with lib; {
         ### KEYBINDS #######
         ####################
         bind = [
-          "$mainMod, RETURN, exec, $terminal"
+          "$mainMod, RETURN, exec, $terminal -e tmux"
           "$mainMod, Q, exec, ~/scripts/smart_close.sh"
           "$mainMod, R, exec, [float;center;size 1200 800]~/scripts/launch_tui.sh $fileManager"
           "$mainMod, B, exec, $browser"

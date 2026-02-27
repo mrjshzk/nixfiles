@@ -35,7 +35,6 @@
 
         vesktop # alternative to discord
         vscodium
-        chromium # sometimes needed unfortunately :(
         telegram-desktop
         bibata-cursors
 
@@ -50,7 +49,6 @@
         mpc
         jq
 
-        lazygit
         brotli
         blender
         libxxf86vm
@@ -60,10 +58,7 @@
         tectonic
         mermaid-cli
 
-        tmux
         zoxide
-        keepassxc
-        xdotool
 
         typst
         typstyle
