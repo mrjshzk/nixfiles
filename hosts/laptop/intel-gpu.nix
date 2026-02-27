@@ -21,4 +21,5 @@
 
   # Better power management for laptop
   services.tlp.enable = true;
+  services.power-profiles-daemon.enable = false; # Conflicts with TLP
 }
