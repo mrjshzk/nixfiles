@@ -9,7 +9,7 @@ with lib; {
     # ============================================
     # GNOME
     # ============================================
-    services.xserver.desktopManager.gnome.enable = true;
+    services.desktopManager.gnome.enable = true;
 
     # ============================================
     # XDG PORTAL
