@@ -167,6 +167,8 @@
   nixpkgs.config.allowUnfree = true;
 
   programs.nix-ld.dev.libraries = with pkgs; [
+    icu
+    libxtst
     # Provides the dynamic loader + libstdc++/libgcc runtime
     stdenv.cc.cc
 

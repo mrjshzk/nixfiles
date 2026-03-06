@@ -76,7 +76,7 @@
         proton-pass
         docker
         filezilla
-        jetbrains.rider
+        jetbrains-toolbox
       ]
       ++ osConfig.core.packages; # Add core application packages
   };
