@@ -65,7 +65,6 @@
 
               programs.nix-ld.dev.enable = true;
               desktopEnvironments.hyprland.enable = true;
-              desktopEnvironments.kde.enable = true;
               desktopEnvironments.gnome.enable = true;
             }
           ];
