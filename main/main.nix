@@ -74,6 +74,7 @@
     wget
     curl
     git
+    git-lfs
     # File management
     unzip
     zip
