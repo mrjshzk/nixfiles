@@ -9,7 +9,7 @@ with lib; {
       enable = true;
 
       settings = with osConfig.core; {
-        "$terminal" = "GTK_IM_MODULE=simple ${terminal.command}";
+        "$terminal" = "${terminal.command}";
         "$fileManager" = "${fileManager.command}";
         "$browser" = "${browser.command}";
         "$menu" = "${widgets.command} ipc call launcher toggle || ${launcher.command} -show drun";

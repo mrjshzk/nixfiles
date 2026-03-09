@@ -14,7 +14,7 @@ in {
       grep = "rg --color=auto";
 
       nrs = rebuild;
-      ghostty = "GTK_IM_MODULE=simple ghostty";
+      ghostty = "ghostty";
     };
     bashrcExtra = ''
             function y() {
