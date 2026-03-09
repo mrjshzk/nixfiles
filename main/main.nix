@@ -93,6 +93,19 @@
     sops
   ];
 
+  services.avahi = {
+    enable = true;
+    nssmdns4 = true; # Use IPv4-only mDNS to avoid slow DNS
+    openFirewall = true;
+    publish = {
+      userServices = true;
+      enable = true;
+      addresses = true;
+      workstation = true;
+      domain = true;
+    };
+  };
+
   # ============================================
   # NIX SETTINGS
   # ============================================

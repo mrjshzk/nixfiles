@@ -76,7 +76,9 @@
         proton-pass
         docker
         filezilla
-        jetbrains.rider
+        unityhub
+        wivrn
+        android-tools
       ]
       ++ osConfig.core.packages; # Add core application packages
   };
