@@ -79,6 +79,7 @@
         unityhub
         wivrn
         android-tools
+        inkscape
       ]
       ++ osConfig.core.packages; # Add core application packages
   };
