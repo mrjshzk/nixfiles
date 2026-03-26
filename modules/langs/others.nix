@@ -19,5 +19,7 @@
     alejandra
 
     docker-language-server # docker compose yaml lsp
+    poetry
+    niv
   ];
 }
