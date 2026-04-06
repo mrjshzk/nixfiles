@@ -59,7 +59,7 @@
 
   home.file.".cache/noctalia/wallpapers.json" = {
     text = builtins.toJSON {
-      defaultWallpaper = "/home/mrjshzk/backgrounds/artorias.png";
+      defaultWallpaper = "/home/mrjshzk/backgrounds/estus.png";
     };
   };
 }
