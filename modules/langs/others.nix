@@ -14,6 +14,10 @@
     stylua
 
     nodejs_24
+    mongodb-ce
+    mongosh
+    mongodb-tools
+    yarn
 
     nil
     alejandra

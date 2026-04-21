@@ -1,4 +1,4 @@
 { ... }: {
-  imports = [ ./terminal ./rider.nix ];
+  imports = [ ./terminal  ];
 
 }

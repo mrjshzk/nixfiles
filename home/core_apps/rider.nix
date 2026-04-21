@@ -4,8 +4,6 @@
   ...
 }: let
   extra-path = with pkgs; [
-    dotnet-sdk_9
-    dotnetPackages.Nuget
     mono
     msbuild
   ];
