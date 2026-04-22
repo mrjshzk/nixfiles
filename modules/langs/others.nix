@@ -18,6 +18,7 @@
     mongosh
     mongodb-tools
     yarn
+    bootstrap-studio
 
     nil
     alejandra
