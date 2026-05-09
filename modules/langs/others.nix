@@ -26,5 +26,12 @@
     docker-language-server # docker compose yaml lsp
     poetry
     niv
+
+    yt-dlp
+    ytdl-sub
+
+    figma-linux
+    figma-agent
+    drawio
   ];
 }
