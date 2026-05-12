@@ -6,7 +6,7 @@
   home-manager = {
     useGlobalPkgs = true;
     useUserPackages = true;
-    users.mrjshzk = import ../home/home.nix;
+    users.${config.user.name} = import ../home/home.nix;
     extraSpecialArgs = {
       inherit inputs;
       inherit (inputs) spicetify-nix neovim-nightly-overlay;

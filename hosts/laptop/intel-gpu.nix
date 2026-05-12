@@ -4,6 +4,10 @@
   pkgs,
   ...
 }: {
+  # Desktop environments
+  desktopEnvironments.hyprland.enable = true;
+  desktopEnvironments.gnome.enable = true;
+
   # Enable Intel graphics
   services.xserver.videoDrivers = ["modesetting"];
 

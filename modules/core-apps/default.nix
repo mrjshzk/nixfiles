@@ -35,7 +35,6 @@ in {
         browser.package
         fileManager.package
         launcher.package
-        editor.package
         prompt.package
         widgets.package
       ];

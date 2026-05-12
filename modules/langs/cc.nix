@@ -1,21 +1,25 @@
-{pkgs, ...}: {
-  environment.systemPackages = with pkgs; [
-    cmake
-    scons
-    ninja
-    gnumake
-    arduino-cli
-    arduino-ide
-    platformio
+{pkgs, lib, config, ...}: {
+  options.langs.cc.enable = lib.mkEnableOption "C/C++ and embedded toolchain";
 
-    (pkgs.clang-tools.overrideAttrs (oldAttrs: {meta.priority = 9;}))
-    (pkgs.clang.overrideAttrs (oldAttrs: {meta.priority = 10;}))
-    (pkgs.libgcc.overrideAttrs (oldAttrs: {meta.priority = 20;}))
+  config = lib.mkIf config.langs.cc.enable {
+    environment.systemPackages = with pkgs; [
+      cmake
+      scons
+      ninja
+      gnumake
+      arduino-cli
+      arduino-ide
+      platformio
 
-    shfmt
-    shellcheck
+      (pkgs.clang-tools.overrideAttrs (oldAttrs: {meta.priority = 9;}))
+      (pkgs.clang.overrideAttrs (oldAttrs: {meta.priority = 10;}))
+      (pkgs.libgcc.overrideAttrs (oldAttrs: {meta.priority = 20;}))
 
-    kdePackages.qtdeclarative
-    kdePackages.qtwayland
-  ];
+      shfmt
+      shellcheck
+
+      kdePackages.qtdeclarative
+      kdePackages.qtwayland
+    ];
+  };
 }
