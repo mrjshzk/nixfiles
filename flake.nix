@@ -11,8 +11,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    hyprland.url = "github:hyprwm/Hyprland";
-
     fenix = {
       url = "github:nix-community/fenix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -56,16 +54,26 @@
             ./hosts/${hostname}/hardware-configuration.nix
             ./modules/langs # programming languages and of sort
             ./modules/user_services # custom systemd services
+            ./modules/user # user identity options
             ./modules/core-apps # core apps definitions
             ./modules/window-manager # sets up nixos modules for wms
             ./main/main.nix # main entry, bootstrapper for home manager
             {
               keyboard.layout = "${hostname}";
               host.hostname = "${hostname}";
+              user.name = "mrjshzk";
 
               programs.nix-ld.dev.enable = true;
-              desktopEnvironments.hyprland.enable = true;
-              desktopEnvironments.gnome.enable = true;
+
+              # Enable all language toolchains by default for all hosts.
+              # Set any of these to false in a host-specific file to opt out.
+              langs.rust.enable = true;
+              langs.go.enable = true;
+              langs.cc.enable = true;
+              langs.python.enable = true;
+              langs.web.enable = true;
+              langs.vulkan.enable = true;
+              langs.others.enable = true;
             }
           ];
       };

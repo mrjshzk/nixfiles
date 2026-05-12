@@ -3,6 +3,10 @@
 
 
 {
+  # Desktop environments
+  desktopEnvironments.hyprland.enable = true;
+  desktopEnvironments.gnome.enable = true;
+
   # Enable NVIDIA drivers
   services.xserver.videoDrivers = [ "nvidia" ];
   
@@ -27,6 +31,5 @@
     XDG_SESSION_TYPE = "wayland";
     GBM_BACKEND = "nvidia-drm";
     __GLX_VENDOR_LIBRARY_NAME = "nvidia";
-    WLR_NO_HARDWARE_CURSORS = "1";
   };
 }

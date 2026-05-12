@@ -1,5 +1,6 @@
 {
   inputs,
+  config,
   osConfig,
   ...
 }: {
@@ -48,7 +49,7 @@
         };
       };
       wallpaper = {
-        directory = "/home/mrjshzk/backgrounds";
+        directory = "${config.home.homeDirectory}/backgrounds";
         transitionDuration = 1000;
       };
       applauncher = {
@@ -59,7 +60,7 @@
 
   home.file.".cache/noctalia/wallpapers.json" = {
     text = builtins.toJSON {
-      defaultWallpaper = "/home/mrjshzk/backgrounds/estus.png";
+      defaultWallpaper = "${config.home.homeDirectory}/backgrounds/estus.png";
     };
   };
 }

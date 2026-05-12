@@ -1,37 +1,41 @@
-{ pkgs, ... }: {
-  environment.systemPackages = with pkgs; [
+{ pkgs, lib, config, ... }: {
+  options.langs.others.enable = lib.mkEnableOption "Miscellaneous language tools (Lua, Node, Godot, etc.)";
 
-    glslang
-    gdtoolkit_4
-    godotPackages_4_6.godot
+  config = lib.mkIf config.langs.others.enable {
+    environment.systemPackages = with pkgs; [
 
-    tree-sitter
-    pandoc
+      glslang
+      gdtoolkit_4
+      godotPackages_4_6.godot
 
-    luajit
-    luajitPackages.luarocks-nix
-    lua-language-server
-    stylua
+      tree-sitter
+      pandoc
 
-    nodejs_24
-    mongodb-ce
-    mongosh
-    mongodb-tools
-    yarn
-    bootstrap-studio
+      luajit
+      luajitPackages.luarocks-nix
+      lua-language-server
+      stylua
 
-    nil
-    alejandra
+      nodejs_24
+      mongodb-ce
+      mongosh
+      mongodb-tools
+      yarn
+      bootstrap-studio
 
-    docker-language-server # docker compose yaml lsp
-    poetry
-    niv
+      nil
+      alejandra
 
-    yt-dlp
-    ytdl-sub
+      docker-language-server # docker compose yaml lsp
+      poetry
+      niv
 
-    figma-linux
-    figma-agent
-    drawio
-  ];
+      yt-dlp
+      ytdl-sub
+
+      figma-linux
+      figma-agent
+      drawio
+    ];
+  };
 }

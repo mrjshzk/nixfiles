@@ -41,7 +41,6 @@
         wiremix # tui for audio
         brightnessctl # Screen brightness
         playerctl # Media control
-        font-awesome
         roboto
         fastfetch
         mpd
@@ -50,14 +49,10 @@
         jq
 
         brotli
-        blender
         libxxf86vm
 
         imagemagick
         git-spice
-        tectonic
-        mermaid-cli
-
         zoxide
 
         typst
@@ -65,21 +60,10 @@
         typst-live
         tinymist
 
-        steam
-        steamcmd
-        steam-run
-        obsidian
         appimage-run
-        mangohud
-        teams-for-linux
-        libreoffice
         proton-pass
-        docker
         filezilla
-        unityhub
-        wivrn
         android-tools
-        inkscape
       ]
       ++ osConfig.core.packages; # Add core application packages
   };
@@ -90,6 +74,9 @@
     ./wm/hyprland.nix
     ./core_apps
     ./noctalia.nix
+    ./packages/gaming.nix
+    ./packages/office.nix
+    ./packages/creative.nix
   ];
 
   programs = {

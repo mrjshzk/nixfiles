@@ -2,11 +2,12 @@
   pkgs,
   lib,
   inputs,
+  config,
   ...
 }: {
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
-  imports = [./hm_bootstrapper.nix inputs.sops-nix.nixosModules.sops];
+  imports = [./hm_bootstrapper.nix];
 
   # Boot loader
   boot.loader.efi.canTouchEfiVariables = true;
@@ -57,7 +58,7 @@
   # USERS
   # ============================================
 
-  users.users.mrjshzk = {
+  users.users.${config.user.name} = {
     # Your username
     isNormalUser = true;
     description = "Miguel Silva";
@@ -232,7 +233,7 @@
   sops = {
     defaultSopsFile = ../secrets/secrets.yaml;
     defaultSopsFormat = "yaml";
-    age.keyFile = "/home/mrjshzk/.config/sops/age/keys.txt";
+    age.keyFile = "/home/${config.user.name}/.config/sops/age/keys.txt";
 
     secrets."webdav/nextcloud" = {
       mode = "0600";
@@ -248,7 +249,7 @@
       after = ["network-online.target"];
       wants = ["network-online.target"];
 
-      what = "https://cloud.mrjshzk.xyz/remote.php/dav/files/mrjshzk";
+      what = "https://cloud.mrjshzk.xyz/remote.php/dav/files/${config.user.name}";
       where = "/mnt/nextcloud";
       options = "x-systemd.automount,uid=1000,gid=100";
       type = "davfs";
